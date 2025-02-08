@@ -63,7 +63,6 @@ describe("load-sass", () => {
 
   test("not found", async () => {
     jest.unstable_mockModule("sass", genericFailure);
-    jest.unstable_mockModule("node-sass", genericFailure);
     return expect(async () => loadSass()).rejects.toThrowErrorMatchingSnapshot();
   });
 });

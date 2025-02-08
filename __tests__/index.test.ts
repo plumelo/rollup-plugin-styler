@@ -472,38 +472,10 @@ validateMany("sass", [
     },
   },
   {
-    title: "importer-node",
-    input: "sass-importer/index.js",
-    options: {
-      sass: {
-        impl: "node-sass",
-        sync: false,
-        importer(url, _, done): void {
-          if (url === "~modularvirtualimport") done({ contents: ".modularvirtual{color:blue}" });
-          else done({ contents: ".virtual{color:red}" });
-        },
-      },
-    },
-  },
-  {
     title: "importer-sync",
     input: "sass-importer/index.js",
     options: {
       sass: {
-        sync: true,
-        importer(url: string): Data {
-          if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };
-          return { contents: ".virtual{color:red}" };
-        },
-      },
-    },
-  },
-  {
-    title: "importer-sync-node",
-    input: "sass-importer/index.js",
-    options: {
-      sass: {
-        impl: "node-sass",
         sync: true,
         importer(url: string): Data {
           if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };
