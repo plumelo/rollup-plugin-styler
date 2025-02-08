@@ -8,6 +8,7 @@ import { humanlizePath } from "../src/utils/path";
 import { litCss } from "rollup-plugin-lit-css";
 
 import { fixture, validateMany, write } from "./helpers";
+import type { Data } from "../src/loaders/sass/types";
 
 beforeAll(async () => fs.remove(fixture("dist")));
 
@@ -490,7 +491,7 @@ validateMany("sass", [
     options: {
       sass: {
         sync: true,
-        importer(url): sass.Data {
+        importer(url: string): Data {
           if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };
           return { contents: ".virtual{color:red}" };
         },
@@ -504,7 +505,7 @@ validateMany("sass", [
       sass: {
         impl: "node-sass",
         sync: true,
-        importer(url): sass.Data {
+        importer(url: string): Data {
           if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };
           return { contents: ".virtual{color:red}" };
         },

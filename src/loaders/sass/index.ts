@@ -2,9 +2,10 @@ import { normalizePath } from "../../utils/path";
 import { Loader } from "../types";
 import loadSass from "./load";
 import { importer, importerSync } from "./importer";
+import { Options, PublicOptions, Result } from "./types";
 
 /** Options for Sass loader */
-export interface SASSLoaderOptions extends Record<string, unknown>, sass.PublicOptions {
+export interface SASSLoaderOptions extends Record<string, unknown>, PublicOptions {
   /** Force Sass implementation */
   impl?: string;
   /** Forcefully enable/disable sync mode */
@@ -16,6 +17,7 @@ const loader: Loader<SASSLoaderOptions> = {
   test: /\.(sass|scss)$/i,
   async process({ code, map }) {
     const options = { ...this.options };
+    options.silenceDeprecations = [...(options.silenceDeprecations ?? []), "legacy-js-api"];
     const [sass, type] = await loadSass(options.impl);
     const sync = options.sync ?? type !== "node-sass";
     const importers = [sync ? importerSync : importer];
@@ -27,10 +29,10 @@ const loader: Loader<SASSLoaderOptions> = {
         ? importers.push(...options.importer)
         : importers.push(options.importer);
 
-    const render = async (options: sass.Options): Promise<sass.Result> =>
+    const render = async (options: Options): Promise<Result> =>
       new Promise((resolve, reject) => {
-        if (sync) resolve(sass.renderSync(options));
-        else sass.render(options, (err, css) => (err ? reject(err) : resolve(css)));
+        if (sync) resolve(sass.renderSync(options as Options<"sync">));
+        else sass.render(options, (err, css) => (err ? reject(err) : resolve(css!)));
       });
 
     // Remove non-Sass options

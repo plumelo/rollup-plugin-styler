@@ -2107,7 +2107,7 @@ console.log(styles);
 `;
 
 exports[`extract absolute-path-fail 1`] = `
-"Extraction path must be relative to the output directory,
+"[plugin styles] Extraction path must be relative to the output directory,
 which is __tests__/fixtures/dist/extract/absolute-path-fail"
 `;
 
@@ -2293,7 +2293,7 @@ console.log(css, css$1);
 `;
 
 exports[`extract relative-path-fail 1`] = `
-"Extraction path must be nested inside output directory,
+"[plugin styles] Extraction path must be nested inside output directory,
 which is __tests__/fixtures/dist/extract/relative-path-fail"
 `;
 
@@ -3403,7 +3403,7 @@ exports[`modules extract: css 1`] = `
 `;
 
 exports[`modules extract: js 1`] = `
-"var modules_5a199c00 = {"primary":"#BF4040","secondary":"#1F4F7F","module":"style_module","module2":"style_module2 composed_composition composition2_compositioned"};
+"var modules_5a199c00 = {"module":"style_module"};
 
 var modules_354770d7 = {"compositioned":"composition2_compositioned"};
 
@@ -3438,7 +3438,7 @@ exports[`modules extract-sourcemap-inline: css 1`] = `
 `;
 
 exports[`modules extract-sourcemap-inline: js 1`] = `
-"var modules_5a199c00 = {"primary":"#BF4040","secondary":"#1F4F7F","module":"style_module","module2":"style_module2 composed_composition composition2_compositioned"};
+"var modules_5a199c00 = {"module":"style_module"};
 
 var modules_354770d7 = {"compositioned":"composition2_compositioned"};
 
@@ -3473,7 +3473,7 @@ exports[`modules extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`modules extract-sourcemap-true: js 1`] = `
-"var modules_5a199c00 = {"primary":"#BF4040","secondary":"#1F4F7F","module":"style_module","module2":"style_module2 composed_composition composition2_compositioned"};
+"var modules_5a199c00 = {"module":"style_module"};
 
 var modules_354770d7 = {"compositioned":"composition2_compositioned"};
 
@@ -3644,7 +3644,7 @@ function injector_d9f9689a (css, options) {
 }
 
 var css$2 = ".style_module {\\n  color: #1F4F7F;\\n}\\n\\n.style_module2 {\\n}\\n";
-var modules_5a199c00 = {"primary":"#BF4040","secondary":"#1F4F7F","module":"style_module","module2":"style_module2 composed_composition composition2_compositioned"};
+var modules_5a199c00 = {"module":"style_module"};
 injector_d9f9689a(css$2,{});
 
 var css$1 = "@media screen and (min-width: 900px) {\\n  .composed_composition {\\n    background-color: aqua;\\n  }\\n}\\n\\n.composed_composition {\\n  background-color: #BF4040;\\n}\\n";
@@ -3662,7 +3662,7 @@ else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 exports[`modules inject-fn: js 1`] = `
 "var css$2 = ".style_module {\\n  color: #1F4F7F;\\n}\\n\\n.style_module2 {\\n}\\n";
 console.log(css$2, true);
-var modules_5a199c00 = {"primary":"#BF4040","secondary":"#1F4F7F","module":"style_module","module2":"style_module2 composed_composition composition2_compositioned"};
+var modules_5a199c00 = {"module":"style_module"};
 
 var css$1 = "@media screen and (min-width: 900px) {\\n  .composed_composition {\\n    background-color: aqua;\\n  }\\n}\\n\\n.composed_composition {\\n  background-color: #BF4040;\\n}\\n";
 console.log(css$1, true);
@@ -3748,11 +3748,7 @@ function injector_d9f9689a (css, options) {
 
 var css$1 = ".style_module {\\n  color: #1F4F7F;\\n}\\n\\n.style_module2 {\\n}\\n";
 var injected$1 = false;
-var modules_5a199c00 = {get "primary"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "#BF4040"; },
-get "secondary"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "#1F4F7F"; },
-get "module"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "style_module"; },
-get "module2"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "style_module2 composed_composition composition2_compositioned"; },
-inject: function inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
+var modules_5a199c00 = {get "module"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "style_module"; }};
 
 var css = ".composition2_compositioned {\\n  width: 30%;\\n}\\n";
 var injected = false;
@@ -3836,11 +3832,7 @@ function injector_d9f9689a (css, options) {
 
 var css$1 = ".style_module {\\n  color: #1F4F7F;\\n}\\n\\n.style_module2 {\\n}\\n";
 var injected$1 = false;
-var modules_5a199c00 = {get "primary"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "#BF4040"; },
-get "secondary"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "#1F4F7F"; },
-get "module"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "style_module"; },
-get "module2"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "style_module2 composed_composition composition2_compositioned"; },
-inject: function inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
+var modules_5a199c00 = {get "module"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return "style_module"; }};
 
 var css = ".composition2_compositioned {\\n  width: 30%;\\n}\\n";
 var injected = false;
@@ -4571,81 +4563,6 @@ injector_f31f2858(css,{});
 "
 `;
 
-exports[`sass importer-node: js 1`] = `
-"/** @type {HTMLElement[]} */
-var containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-var styleTags = [];
-
-/**
- * @param {string} css
- * @param {object} options
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {string} [options.container]
- * @param {Record<string,string>} [options.attributes]
- * @returns {void}
- */
-function injector_f31f2858 (css, options) {
-  if (!css || typeof document === "undefined") return;
-
-  var position = options.prepend === true ? "prepend" : "append";
-  var singleTag = options.singleTag === true;
-
-  var container =
-    typeof options.container === "string"
-      ? document.querySelector(options.container)
-      : document.getElementsByTagName("head")[0];
-
-  function createStyleTag() {
-    var styleTag = document.createElement("style");
-    styleTag.setAttribute("type", "text/css");
-    if (options.attributes) {
-      var k = Object.keys(options.attributes);
-      for (var i = 0; i < k.length; i++) {
-        styleTag.setAttribute(k[i], options.attributes[k[i]]);
-      }
-    }
-    var pos = position === "prepend" ? "afterbegin" : "beforeend";
-    container.insertAdjacentElement(pos, styleTag);
-    return styleTag;
-  }
-
-  /** @type {HTMLStyleElement} */
-  var styleTag;
-
-  if (singleTag) {
-    var id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.appendChild(document.createTextNode(css));
-  }
-}
-
-var css = ".virtual {\\n  color: red; }\\n\\n.modularvirtual {\\n  color: blue; }\\n";
-injector_f31f2858(css,{});
-"
-`;
-
 exports[`sass importer-sync: js 1`] = `
 "/** @type {HTMLElement[]} */
 var containers = [];
@@ -4717,81 +4634,6 @@ function injector_f31f2858 (css, options) {
 }
 
 var css = ".virtual {\\n  color: red;\\n}\\n\\n.modularvirtual {\\n  color: blue;\\n}";
-injector_f31f2858(css,{});
-"
-`;
-
-exports[`sass importer-sync-node: js 1`] = `
-"/** @type {HTMLElement[]} */
-var containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-var styleTags = [];
-
-/**
- * @param {string} css
- * @param {object} options
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {string} [options.container]
- * @param {Record<string,string>} [options.attributes]
- * @returns {void}
- */
-function injector_f31f2858 (css, options) {
-  if (!css || typeof document === "undefined") return;
-
-  var position = options.prepend === true ? "prepend" : "append";
-  var singleTag = options.singleTag === true;
-
-  var container =
-    typeof options.container === "string"
-      ? document.querySelector(options.container)
-      : document.getElementsByTagName("head")[0];
-
-  function createStyleTag() {
-    var styleTag = document.createElement("style");
-    styleTag.setAttribute("type", "text/css");
-    if (options.attributes) {
-      var k = Object.keys(options.attributes);
-      for (var i = 0; i < k.length; i++) {
-        styleTag.setAttribute(k[i], options.attributes[k[i]]);
-      }
-    }
-    var pos = position === "prepend" ? "afterbegin" : "beforeend";
-    container.insertAdjacentElement(pos, styleTag);
-    return styleTag;
-  }
-
-  /** @type {HTMLStyleElement} */
-  var styleTag;
-
-  if (singleTag) {
-    var id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.appendChild(document.createTextNode(css));
-  }
-}
-
-var css = ".virtual {\\n  color: red; }\\n\\n.modularvirtual {\\n  color: blue; }\\n";
 injector_f31f2858(css,{});
 "
 `;
