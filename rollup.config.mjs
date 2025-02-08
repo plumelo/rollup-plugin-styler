@@ -61,7 +61,7 @@ const config = [
     output: { format: "es", file: pkg.types },
     plugins: [
       externals({ deps: true }),
-      dts({ respectExternal: true }),
+      dts({ respectExternal: false }),
       {
         name: "shims",
         banner: readdirSync(`${__dirname}/src/shims`)
