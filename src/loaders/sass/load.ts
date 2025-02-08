@@ -17,9 +17,12 @@ export default async function (impl?: string): Promise<[sass.Sass, string]> {
 
   // Loading one of the supported modules
   for (const id of ids) {
-    // eslint-disable-next-line no-await-in-loop
-    const sass = (await import(id)) as sass.Sass;
-    if (sass) return [sass, id];
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      const sass = (await import(id)) as sass.Sass;
+      if (sass) return [sass, id];
+      // eslint-disable-next-line no-empty
+    } catch {}
   }
 
   throw new Error(`You need to install ${idsFmt} package in order to process Sass files`);

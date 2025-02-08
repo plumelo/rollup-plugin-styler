@@ -63,7 +63,7 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
   const resolve = options.resolve ?? resolveDefault;
   const alias = options.alias ?? {};
   const placeholder =
-    options.hash ?? true
+    (options.hash ?? true)
       ? typeof options.hash === "string"
         ? options.hash
         : placeholderHashDefault
