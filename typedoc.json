@@ -5,6 +5,5 @@
   "excludeExternals": true,
   "disableSources": true,
   "gitRevision": "main",
-  "githubPages": true,
-  "internalNamespace": "Non-exported"
+  "githubPages": true
 }
