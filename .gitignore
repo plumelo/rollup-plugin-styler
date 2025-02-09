@@ -1,0 +1,8 @@
+/**/dist/
+/.idea/
+/coverage/
+/node_modules/
+/.cache
+/*.log
+/.eslintcache
+/docs

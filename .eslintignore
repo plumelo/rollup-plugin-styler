@@ -1,0 +1,8 @@
+/dist
+/tmp
+/.cache
+/node_modules
+/coverage
+/docs
+/__tests__/fixtures
+.eslintrc.js
