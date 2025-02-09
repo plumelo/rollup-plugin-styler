@@ -11,6 +11,10 @@ import { fixture } from "./helpers";
 
 import loadModule from "../src/utils/load-module";
 
+const genericFailure = () => {
+  throw new Error("fail");
+};
+
 test("noop", async () => {
   const { css } = await postcss(postcssNoop).process(".foo{color:red}", { from: "simple.css" });
   expect(css).toBe(".foo{color:red}");
@@ -58,8 +62,7 @@ describe("load-sass", () => {
   });
 
   test("not found", async () => {
-    jest.unstable_mockModule("sass", () => jest.fn());
-    jest.unstable_mockModule("node-sass", () => jest.fn());
+    jest.unstable_mockModule("sass", genericFailure);
     return expect(async () => loadSass()).rejects.toThrowErrorMatchingSnapshot();
   });
 });

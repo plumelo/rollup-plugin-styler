@@ -1,13 +1,14 @@
 import arrayFmt from "../../utils/array-fmt";
+import type { SassModule } from "./types";
 
 const ids = ["sass", "node-sass"];
 const idsFmt = arrayFmt(ids);
-export default async function (impl?: string): Promise<[sass.Sass, string]> {
+export default async function (impl?: string): Promise<readonly [SassModule, string]> {
   // Loading provided implementation
   if (impl) {
     return import(impl)
-      .then(({ default: provided }: { default?: sass.Sass } = {}) => {
-        if (provided) return [provided, impl] as [sass.Sass, string];
+      .then((provided: SassModule) => {
+        if (provided) return [provided, impl] as const;
         throw undefined;
       })
       .catch(() => {
@@ -17,9 +18,12 @@ export default async function (impl?: string): Promise<[sass.Sass, string]> {
 
   // Loading one of the supported modules
   for (const id of ids) {
-    // eslint-disable-next-line no-await-in-loop
-    const sass = await import(id).then((m: { default?: sass.Sass }) => m.default);
-    if (sass) return [sass, id];
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      const sass: SassModule = (await import(id)) as SassModule;
+      if (sass) return [sass, id] as const;
+      // eslint-disable-next-line no-empty
+    } catch {}
   }
 
   throw new Error(`You need to install ${idsFmt} package in order to process Sass files`);

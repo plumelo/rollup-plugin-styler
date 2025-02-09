@@ -25,7 +25,7 @@ export default async function (extracted: Extracted[]): Promise<Concatenated> {
     consumer.eachMapping(m =>
       sm.addMapping({
         generated: { line: offset + m.generatedLine, column: m.generatedColumn },
-        original: { line: m.originalLine, column: m.originalColumn },
+        original: { line: m.originalLine!, column: m.originalColumn! },
         source: m.source,
         name: m.name,
       }),

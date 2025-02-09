@@ -121,9 +121,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
         }
       }
 
-    map = mm(res.map?.toJSON())
-      .resolve(path.dirname(postcssOpts.to))
-      .toString();
+    map = mm(res.map?.toJSON()).resolve(path.dirname(postcssOpts.to)).toString();
 
     if (!options.extract && this.sourceMap) {
       const m = mm(map)
