@@ -1,3 +1,26 @@
+# [2.0.0](https://github.com/plumelo/rollup-plugin-styler/compare/v1.8.0...v2.0.0) (2025-02-09)
+
+
+### Bug Fixes
+
+* **deps:** reset stylus version ([50a9082](https://github.com/plumelo/rollup-plugin-styler/commit/50a9082e9c044f635ece7e55e0a8f5ce17e09e39))
+
+
+### Features
+
+* **ci:** refactor husky hooks ([66c2a2c](https://github.com/plumelo/rollup-plugin-styler/commit/66c2a2c7949867810fbae211cf631da27184fb1c))
+* **deps:** update ([4c9e22f](https://github.com/plumelo/rollup-plugin-styler/commit/4c9e22f92c604ba1752e26dee143c6555f6ecc6a))
+* **deps:** upgrade minor deps ([24cf4fb](https://github.com/plumelo/rollup-plugin-styler/commit/24cf4fb18924d845548b38dab338cee1b78d06c9))
+* **sass:** emove official support for node-sass ([c0a0a08](https://github.com/plumelo/rollup-plugin-styler/commit/c0a0a08909b3559f1d423914a6002f2907d9a89d))
+* **sass:** update sass types and tests ([3b83138](https://github.com/plumelo/rollup-plugin-styler/commit/3b83138acce144ece89d589fd26bb1044eb82d65))
+* update deps ([38fb4de](https://github.com/plumelo/rollup-plugin-styler/commit/38fb4de30d3e64430e62411f526fc2fa4889d67a))
+* update sass import ([b99b31d](https://github.com/plumelo/rollup-plugin-styler/commit/b99b31d84a4d7324683a186e411859cb45047a20))
+
+
+### BREAKING CHANGES
+
+* **sass:** Remove official support for node-sass
+
 # [1.8.0](https://github.com/plumelo/rollup-plugin-styler/compare/v1.7.0...v1.8.0) (2023-12-22)
 
 
