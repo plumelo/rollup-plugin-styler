@@ -116,7 +116,7 @@
     "prettier": "^3.0.0",
     "rollup": "^4.4.1",
     "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-lit-css": "^6.0.0",
+    "rollup-plugin-lit-css": "^5.0.0",
     "rollup-plugin-node-externals": "^8.0.0",
     "sass": "^1.69.5",
     "semantic-release": "^24.0.0",
