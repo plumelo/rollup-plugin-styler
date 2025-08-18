@@ -96,7 +96,7 @@
     "@types/stylus": "^0.48.42",
     "@types/uglifycss": "^0.0.11",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
+    "@typescript-eslint/parser": "^8.39.1",
     "autoprefixer": "^10.4.16",
     "babel-jest": "^29.0.0",
     "eslint": "^8.53.0",
