@@ -59,7 +59,7 @@
     "fs-extra": "^11.0.0",
     "icss-utils": "^5.1.0",
     "mime-types": "^3.0.1",
-    "p-queue": "^8.0.0",
+    "p-queue": "^9.0.0",
     "postcss": "^8.4.31",
     "postcss-modules-extract-imports": "^3.0.0",
     "postcss-modules-local-by-default": "^4.0.3",
