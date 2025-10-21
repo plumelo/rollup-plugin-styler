@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node: ["22"]
+        node: ["22", "24"]
 
     steps:
       - name: Code checkout
