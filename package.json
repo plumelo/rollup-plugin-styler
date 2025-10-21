@@ -119,7 +119,7 @@
     "rollup-plugin-lit-css": "^5.0.0",
     "rollup-plugin-node-externals": "^8.0.0",
     "sass": "^1.69.5",
-    "semantic-release": "^24.0.0",
+    "semantic-release": "^25.0.1",
     "shx": "^0.3.4",
     "stylus": "^0.61.0",
     "sugarss": "^4.0.1",
