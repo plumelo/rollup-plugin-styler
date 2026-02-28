@@ -104,7 +104,7 @@
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^27.6.0",
-    "eslint-plugin-unicorn": "^49.0.0",
+    "eslint-plugin-unicorn": "^62.0.0",
     "gh-pages": "^6.0.0",
     "husky": "^9.0.0",
     "is-ci": "^4.0.0",
