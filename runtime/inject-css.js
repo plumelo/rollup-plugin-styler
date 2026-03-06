@@ -12,7 +12,7 @@ var styleTags = [];
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-export default function (css, options) {
+var styleInjector = function (css, options) {
   if (!css || typeof document === "undefined") return;
 
   var position = options.prepend === true ? "prepend" : "append";
@@ -22,6 +22,14 @@ export default function (css, options) {
     typeof options.container === "string"
       ? document.querySelector(options.container)
       : document.getElementsByTagName("head")[0];
+
+  // Fallback if container is not available yet
+  if (!container && document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      styleInjector(css, options);
+    });
+    return;
+  }
 
   function createStyleTag() {
     var styleTag = document.createElement("style");
@@ -65,4 +73,6 @@ export default function (css, options) {
   } else {
     styleTag.appendChild(document.createTextNode(css));
   }
-}
+};
+
+export default styleInjector;
