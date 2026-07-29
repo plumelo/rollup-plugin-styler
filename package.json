@@ -50,7 +50,7 @@
     "prepare": "is-ci || husky",
     "prepublishOnly": "npm run build",
     "release": "semantic-release",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.0.0",
