@@ -9,19 +9,18 @@ export type Importer = SyncImporter | AsyncImporter;
 
 export type Type = "sync" | "async";
 
-export interface PublicOptions<T extends Type = Type>
-  extends Pick<
-    LegacyOptions<T>,
-    | "data"
-    | "includePaths"
-    | "indentType"
-    | "indentWidth"
-    | "importer"
-    | "linefeed"
-    | "outputStyle"
-    | "quietDeps"
-    | "silenceDeprecations"
-  > {}
+export interface PublicOptions<T extends Type = Type> extends Pick<
+  LegacyOptions<T>,
+  | "data"
+  | "includePaths"
+  | "indentType"
+  | "indentWidth"
+  | "importer"
+  | "linefeed"
+  | "outputStyle"
+  | "quietDeps"
+  | "silenceDeprecations"
+> {}
 
 export type Data = { file: string } | { contents: string } | Error | null;
 
