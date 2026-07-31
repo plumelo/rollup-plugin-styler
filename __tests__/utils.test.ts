@@ -39,7 +39,7 @@ describe("less", () => {
     jest.unstable_mockModule("less", () => jest.fn());
     const loaders = new Loaders({ use: [["less", {}]], loaders: [], extensions: [""] });
     await expect(
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       loaders.process({ code: "" }, { id: "file.less" } as any),
     ).rejects.toThrowErrorMatchingSnapshot();
   });
@@ -50,7 +50,7 @@ describe("stylus", () => {
     jest.unstable_mockModule("stylus", () => jest.fn());
     const loaders = new Loaders({ use: [["stylus", {}]], loaders: [], extensions: [""] });
     await expect(
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       loaders.process({ code: "" }, { id: "file.styl" } as any),
     ).rejects.toThrowErrorMatchingSnapshot();
   });

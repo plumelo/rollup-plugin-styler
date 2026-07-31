@@ -57,7 +57,7 @@ export function ensureUseOption(opts: Options): [string, Record<string, unknown>
   };
 
   if (opts.use === undefined) return Object.values(all);
-  else if (!Array.isArray(opts.use)) throw new TypeError("`use` option must be an array!");
+  if (!Array.isArray(opts.use)) throw new TypeError("`use` option must be an array!");
 
   return opts.use.map(loader => {
     if (typeof loader !== "string")
@@ -77,7 +77,7 @@ export async function ensurePCSSOption<T>(option: T | string, type: PCSSOption):
 
 export async function ensurePCSSPlugins(plugins: Options["plugins"]): Promise<AcceptedPlugin[]> {
   if (plugins === undefined) return [];
-  else if (typeof plugins !== "object")
+  if (typeof plugins !== "object")
     throw new TypeError("`plugins` option must be an array or an object!");
 
   const ps: AcceptedPlugin[] = [];
