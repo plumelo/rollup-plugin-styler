@@ -36,6 +36,10 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "provenance": true
+  },
   "scripts": {
     "prebuild": "shx rm -rf dist",
     "build": "rollup -c --environment NODE_ENV:production",
