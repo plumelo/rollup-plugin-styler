@@ -1,3 +1,17 @@
+# [2.1.0](https://github.com/plumelo/rollup-plugin-styler/compare/v2.0.0...v2.1.0) (2026-07-31)
+
+
+### Bug Fixes
+
+* **less:** disable sourcemap annotation to prevent duplicate comments ([b5dc3ba](https://github.com/plumelo/rollup-plugin-styler/commit/b5dc3ba1a002aca43f95261cc7aaf89d2ad458d4)), closes [less/less.js#4378](https://github.com/less/less.js/issues/4378) [less/less.js#3517](https://github.com/less/less.js/issues/3517) [query#hash](https://github.com/query/issues/hash) [rollup#6240](https://github.com/rollup/issues/6240)
+* **test:** revert test script, rely on CI NODE_OPTIONS for ESM ([a0eb969](https://github.com/plumelo/rollup-plugin-styler/commit/a0eb969b33d1aa8cc2f2dd6a22823d3c0782f999))
+* **typedoc:** update config ([cd0d808](https://github.com/plumelo/rollup-plugin-styler/commit/cd0d8083ee6f342c8d0b9df89d8a3eed0a8db608))
+
+
+### Features
+
+* **load-module:** support ESM-only packages with exports fields ([e2b2a27](https://github.com/plumelo/rollup-plugin-styler/commit/e2b2a2736ca85fcd8467b10dd463aacf2d529907))
+
 # [2.0.0](https://github.com/plumelo/rollup-plugin-styler/compare/v1.8.0...v2.0.0) (2025-02-09)
 
 
