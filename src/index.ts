@@ -15,8 +15,6 @@ import {
   inferSourceMapOption,
   inferHandlerOption,
   ensureUseOption,
-  ensurePCSSOption,
-  ensurePCSSPlugins,
 } from "./utils/options";
 
 export default (options: Options = {}): Plugin => {
@@ -47,14 +45,13 @@ export default (options: Options = {}): Plugin => {
   )
     throw new Error("`inject.treeshakeable` option is incompatible with `namedExports` option");
 
-  if (options.parser) loaderOpts.postcss.parser = ensurePCSSOption(options.parser, "parser");
+  if (options.parser) loaderOpts.postcss.parser = options.parser;
 
-  if (options.syntax) loaderOpts.postcss.syntax = ensurePCSSOption(options.syntax, "syntax");
+  if (options.syntax) loaderOpts.postcss.syntax = options.syntax;
 
-  if (options.stringifier)
-    loaderOpts.postcss.stringifier = ensurePCSSOption(options.stringifier, "stringifier");
+  if (options.stringifier) loaderOpts.postcss.stringifier = options.stringifier;
 
-  if (options.plugins) loaderOpts.postcss.plugins = ensurePCSSPlugins(options.plugins);
+  if (options.plugins) loaderOpts.postcss.plugins = options.plugins;
 
   const loaders = new Loaders({
     use: [["postcss", loaderOpts], ...ensureUseOption(options), ["sourcemap", {}]],

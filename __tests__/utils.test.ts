@@ -21,16 +21,16 @@ test("noop", async () => {
 });
 
 describe("load-module", () => {
-  test("wrong path", () => {
-    expect(loadModule("totallyWRONGPATH/here")).toBeUndefined();
+  test("wrong path", async () => {
+    expect(await loadModule("totallyWRONGPATH/here")).toBeUndefined();
   });
 
-  test("correct cwd path", () => {
-    expect(loadModule(humanlizePath(fixture("utils/fixture")))).toBe("this is fixture");
+  test("correct cwd path", async () => {
+    expect(await loadModule(humanlizePath(fixture("utils/fixture")))).toBe("this is fixture");
   });
 
-  test("correct absolute path", () => {
-    expect(loadModule(fixture("utils/fixture"))).toBe("this is fixture");
+  test("correct absolute path", async () => {
+    expect(await loadModule(fixture("utils/fixture"))).toBe("this is fixture");
   });
 });
 
@@ -68,8 +68,8 @@ describe("load-sass", () => {
 });
 
 describe("option-utils", () => {
-  test("wrong postcss option", () => {
-    expect(() => ensurePCSSOption("pumpinizer", "plugin")).toThrowErrorMatchingSnapshot();
+  test("wrong postcss option", async () => {
+    await expect(ensurePCSSOption("pumpinizer", "plugin")).rejects.toThrowErrorMatchingSnapshot();
   });
 });
 

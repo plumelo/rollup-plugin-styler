@@ -53,13 +53,13 @@ export interface PostCSSLoaderOptions extends Record<string, unknown> {
   /** Options for PostCSS processor */
   postcss: {
     /** @see {@link Options.parser} */
-    parser?: postcss.Parser;
+    parser?: string | postcss.Parser;
     /** @see {@link Options.syntax} */
-    syntax?: postcss.Syntax;
+    syntax?: string | postcss.Syntax;
     /** @see {@link Options.stringifier} */
-    stringifier?: postcss.Stringifier;
+    stringifier?: string | postcss.Stringifier;
     /** @see {@link Options.plugins} */
-    plugins?: postcss.AcceptedPlugin[];
+    plugins?: Options["plugins"];
   };
 }
 

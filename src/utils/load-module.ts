@@ -1,4 +1,4 @@
-import { resolveSync, ResolveOpts } from "./resolve";
+import { resolveSync, ResolveOpts, packageFilterBuilder } from "./resolve";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 
@@ -9,15 +9,23 @@ const options: ResolveOpts = {
   basedirs: [process.cwd()],
   extensions: [".js", ".mjs", ".cjs", ".json"],
   preserveSymlinks: false,
-  packageFilter: pkg => pkg,
+  packageFilter: packageFilterBuilder(),
 };
 
-export default function (moduleId: string): unknown {
+export default async function (moduleId: string): Promise<unknown> {
   if (loaded[moduleId]) return loaded[moduleId];
   if (loaded[moduleId] === null) return;
 
   try {
-    loaded[moduleId] = require(resolveSync([moduleId, `./${moduleId}`], options));
+    const resolved = resolveSync([moduleId, `./${moduleId}`], options);
+    try {
+      loaded[moduleId] = require(resolved);
+    } catch {
+      // ESM module that cannot be require()d (e.g. .mjs in jest VM context)
+
+      const mod = (await import(resolved)) as { default: unknown };
+      loaded[moduleId] = mod.default;
+    }
   } catch {
     loaded[moduleId] = null;
     return;

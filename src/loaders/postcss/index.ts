@@ -8,6 +8,7 @@ import { PostCSSLoaderOptions, InjectOptions } from "../../types";
 import { humanlizePath, normalizePath } from "../../utils/path";
 import { mm } from "../../utils/sourcemap";
 import { resolveAsync } from "../../utils/resolve";
+import { ensurePCSSOption, ensurePCSSPlugins } from "../../utils/options";
 import safeId from "../../utils/safe-id";
 import { Loader } from "../types";
 import loadConfig from "./config";
@@ -67,12 +68,21 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     delete postcssOpts.plugins;
 
+    // Resolve string-based parser/syntax/stringifier/plugins lazily (async)
+    if (typeof postcssOpts.parser === "string")
+      postcssOpts.parser = await ensurePCSSOption(postcssOpts.parser, "parser");
+    if (typeof postcssOpts.syntax === "string")
+      postcssOpts.syntax = await ensurePCSSOption(postcssOpts.syntax, "syntax");
+    if (typeof postcssOpts.stringifier === "string")
+      postcssOpts.stringifier = await ensurePCSSOption(postcssOpts.stringifier, "stringifier");
+
     if (options.import)
       plugins.push(postcssImport({ extensions: options.extensions, ...options.import }));
 
     if (options.url) plugins.push(postcssUrl({ inline: Boolean(options.inject), ...options.url }));
 
-    if (options.postcss.plugins) plugins.push(...options.postcss.plugins);
+    if (options.postcss.plugins)
+      plugins.push(...(await ensurePCSSPlugins(options.postcss.plugins)));
 
     if (config.plugins) plugins.push(...config.plugins);
 
@@ -96,7 +106,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     // Avoid PostCSS warning
     if (plugins.length === 0) plugins.push(postcssNoop);
 
-    const res = await postcss(plugins).process(code, postcssOpts);
+    const res = await postcss(plugins).process(code, postcssOpts as ProcessOptions);
 
     for (const msg of res.messages)
       switch (msg.type) {
