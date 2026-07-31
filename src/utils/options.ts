@@ -68,14 +68,14 @@ export function ensureUseOption(opts: Options): [string, Record<string, unknown>
 }
 
 type PCSSOption = "parser" | "syntax" | "stringifier" | "plugin";
-export function ensurePCSSOption<T>(option: T | string, type: PCSSOption): T {
+export async function ensurePCSSOption<T>(option: T | string, type: PCSSOption): Promise<T> {
   if (typeof option !== "string") return option;
-  const module = loadModule(option);
+  const module = await loadModule(option);
   if (!module) throw new Error(`Unable to load PostCSS ${type} \`${option}\``);
   return module as T;
 }
 
-export function ensurePCSSPlugins(plugins: Options["plugins"]): AcceptedPlugin[] {
+export async function ensurePCSSPlugins(plugins: Options["plugins"]): Promise<AcceptedPlugin[]> {
   if (plugins === undefined) return [];
   else if (typeof plugins !== "object")
     throw new TypeError("`plugins` option must be an array or an object!");
@@ -85,15 +85,18 @@ export function ensurePCSSPlugins(plugins: Options["plugins"]): AcceptedPlugin[]
     if (!p) continue;
 
     if (!Array.isArray(p)) {
-      ps.push(ensurePCSSOption(p, "plugin"));
+      // eslint-disable-next-line no-await-in-loop
+      ps.push(await ensurePCSSOption(p, "plugin"));
       continue;
     }
 
     const [plug, opts] = p;
     if (opts) {
-      ps.push(ensurePCSSOption(plug, "plugin")(opts));
+      // eslint-disable-next-line no-await-in-loop
+      ps.push((await ensurePCSSOption(plug, "plugin"))(opts));
     } else {
-      ps.push(ensurePCSSOption(plug, "plugin"));
+      // eslint-disable-next-line no-await-in-loop
+      ps.push(await ensurePCSSOption(plug, "plugin"));
     }
   }
 

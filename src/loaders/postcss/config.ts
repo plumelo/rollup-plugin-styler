@@ -29,7 +29,9 @@ export default async function (
 
   type Found = { config: Config | ((ctx: Record<string, unknown>) => Config); isEmpty?: boolean };
   const searchPath = config.path ? path.resolve(config.path) : dir;
-  const found: Found | null = await cosmiconfig("postcss").search(searchPath);
+  const found: Found | null = await cosmiconfig("postcss", { searchStrategy: "global" }).search(
+    searchPath,
+  );
 
   if (!found || found.isEmpty) return { plugins: [], options: {} };
 
@@ -43,10 +45,10 @@ export default async function (
         })
       : found.config;
 
-  const result: Result = { plugins: ensurePCSSPlugins(plugins), options: {} };
-  if (parser) result.options.parser = ensurePCSSOption(parser, "parser");
-  if (syntax) result.options.syntax = ensurePCSSOption(syntax, "syntax");
-  if (stringifier) result.options.stringifier = ensurePCSSOption(stringifier, "stringifier");
+  const result: Result = { plugins: await ensurePCSSPlugins(plugins), options: {} };
+  if (parser) result.options.parser = await ensurePCSSOption(parser, "parser");
+  if (syntax) result.options.syntax = await ensurePCSSOption(syntax, "syntax");
+  if (stringifier) result.options.stringifier = await ensurePCSSOption(stringifier, "stringifier");
 
   return result;
 }

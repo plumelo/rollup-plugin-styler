@@ -48,6 +48,10 @@ export const packageFilterBuilder: PackageFilterBuilderFn = (opts = {}) => {
         pkg.main = resolvedExport;
         return pkg;
       }
+      if (Array.isArray(resolvedExport) && resolvedExport.length > 0) {
+        pkg.main = resolvedExport[0];
+        return pkg;
+      }
     } catch {
       /* noop */
     }

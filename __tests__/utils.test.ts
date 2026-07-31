@@ -3,7 +3,7 @@ import postcss from "postcss";
 import Loaders from "../src/loaders";
 import postcssNoop from "../src/loaders/postcss/noop";
 import loadSass from "../src/loaders/sass/load";
-import { ensurePCSSOption } from "../src/utils/options";
+import { ensurePCSSOption, ensurePCSSPlugins } from "../src/utils/options";
 import { mm, getMap, stripMap } from "../src/utils/sourcemap";
 import { humanlizePath } from "../src/utils/path";
 
@@ -21,16 +21,16 @@ test("noop", async () => {
 });
 
 describe("load-module", () => {
-  test("wrong path", () => {
-    expect(loadModule("totallyWRONGPATH/here")).toBeUndefined();
+  test("wrong path", async () => {
+    expect(await loadModule("totallyWRONGPATH/here")).toBeUndefined();
   });
 
-  test("correct cwd path", () => {
-    expect(loadModule(humanlizePath(fixture("utils/fixture")))).toBe("this is fixture");
+  test("correct cwd path", async () => {
+    expect(await loadModule(humanlizePath(fixture("utils/fixture")))).toBe("this is fixture");
   });
 
-  test("correct absolute path", () => {
-    expect(loadModule(fixture("utils/fixture"))).toBe("this is fixture");
+  test("correct absolute path", async () => {
+    expect(await loadModule(fixture("utils/fixture"))).toBe("this is fixture");
   });
 });
 
@@ -68,8 +68,14 @@ describe("load-sass", () => {
 });
 
 describe("option-utils", () => {
-  test("wrong postcss option", () => {
-    expect(() => ensurePCSSOption("pumpinizer", "plugin")).toThrowErrorMatchingSnapshot();
+  test("wrong postcss option", async () => {
+    await expect(ensurePCSSOption("pumpinizer", "plugin")).rejects.toThrowErrorMatchingSnapshot();
+  });
+
+  test("plugin as array without options", async () => {
+    const plugins = await ensurePCSSPlugins([["autoprefixer"]]);
+    expect(plugins).toHaveLength(1);
+    expect(typeof plugins[0]).toBe("function");
   });
 });
 
