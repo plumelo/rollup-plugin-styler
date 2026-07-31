@@ -17,7 +17,7 @@ const plugin: PluginCreator<InteroperableCSSOptions> = (options = {}) => {
 
   return {
     postcssPlugin: name,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
+
     async OnceExit(css, { result: res }) {
       if (!css.source?.input.file) return;
 

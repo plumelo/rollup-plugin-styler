@@ -34,7 +34,6 @@ export const walkUrls = (
           const [urlNode] = nodes;
           const url = urlNode?.type === "string" ? urlNode.value : valueParser.stringify(nodes);
           callback(url.replaceAll(/^\s+|\s+$/g, ""), urlNode);
-          continue;
         }
       }
     }

@@ -35,7 +35,7 @@ const plugin: PluginCreator<ImportOptions> = (options = {}) => {
 
   return {
     postcssPlugin: name,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
+
     async Once(css, { result: res }) {
       if (!css.source?.input.file) return;
 

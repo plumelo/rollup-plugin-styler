@@ -59,7 +59,6 @@ export default class Loaders {
 
   async process(payload: Payload, context: LoaderContext): Promise<Payload> {
     if (!this.workQueue) {
-      // eslint-disable-next-line import/no-unresolved
       const { default: pQueue } = await import("p-queue");
       this.workQueue = new pQueue({ concurrency: threadPoolSize - 1 });
     }
@@ -68,7 +67,7 @@ export default class Loaders {
       const loader = this.loaders.get(name);
       if (!loader) continue;
       const ctx: LoaderContext = { ...context, options };
-      //eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+
       if (loader.alwaysProcess || matchFile(ctx.id, loader.test)) {
         payload = (await workQueue.add(loader.process.bind(ctx, payload)))!;
       }

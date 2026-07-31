@@ -22,7 +22,7 @@ export interface PublicOptions<T extends Type = Type> extends Pick<
   | "silenceDeprecations"
 > {}
 
-export type Data = { file: string } | { contents: string } | Error | null;
+export type Data = Error | { file: string } | { contents: string } | null;
 
 export type Options<T extends Type = Type> = LegacyOptions<T>;
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import path from "path";
 import { Plugin, OutputChunk, OutputAsset } from "rollup";
 import { createFilter } from "@rollup/pluginutils";
@@ -147,7 +146,6 @@ export default (options: Options = {}): Plugin => {
     },
 
     async generateBundle(opts, bundle) {
-      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
       if (extracted.length === 0 || !(opts.dir || opts.file)) return;
 
       const dir = opts.dir ?? path.dirname(opts.file!);

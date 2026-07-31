@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import fs from "fs-extra";
 import { rollup } from "rollup";
 import { RawSourceMap } from "source-map-js";
@@ -25,21 +24,21 @@ validateMany("basic", [
     title: "mode-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     options: { mode: "mash" as any },
   },
   {
     title: "use-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     options: { use: [false] as any },
   },
   {
     title: "use-type-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     options: { use: false as any },
   },
   {
@@ -64,14 +63,14 @@ validateMany("basic", [
     title: "plugin-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     options: { plugins: ["pulverizer"] as any },
   },
   {
     title: "plugin-type-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     options: { plugins: "pulverizer" as any },
   },
   {
@@ -744,9 +743,9 @@ test("augment-chunk-hash", async () => {
 
   const [foo1, bar, foo2] = outputFiles;
 
-  const foo1Hash = foo1.split(".")[1];
-  const foo2Hash = foo1.split(".")[1];
-  const barHash = bar.split(".")[1];
+  const foo1Hash = foo1.split(".", 2)[1];
+  const foo2Hash = foo1.split(".", 2)[1];
+  const barHash = bar.split(".", 2)[1];
 
   // Verify that [hash] part of the filenames is truthy
   expect(foo1Hash).toBeTruthy();

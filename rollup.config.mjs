@@ -4,7 +4,7 @@ import terser from "@rollup/plugin-terser";
 import { babel } from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import dts from "rollup-plugin-dts";
-// eslint-disable-next-line import/no-unresolved
+
 import externals from "rollup-plugin-node-externals";
 import json from "@rollup/plugin-json";
 import replace from "@rollup/plugin-replace";
