@@ -13,6 +13,8 @@ const loader: Loader<StylusLoaderOptions> = {
   test: /\.(styl|stylus)$/i,
   async process({ code, map }) {
     const options = { ...this.options };
+    // the cast is load-bearing: @types/stylus Renderer lacks `sourcemap`, the shim's Stylus carries it
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     const stylus = (await import("stylus").then(m => m.default)) as stylus.Stylus;
     if (!stylus)
       throw new Error("You need to install `stylus` package in order to process Stylus files");

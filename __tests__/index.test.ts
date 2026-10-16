@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import fs from "fs-extra";
 import { rollup } from "rollup";
 import { RawSourceMap } from "source-map-js";
@@ -24,21 +25,21 @@ validateMany("basic", [
     title: "mode-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
     options: { mode: "mash" as any },
   },
   {
     title: "use-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
     options: { use: [false] as any },
   },
   {
     title: "use-type-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
     options: { use: false as any },
   },
   {
@@ -63,14 +64,14 @@ validateMany("basic", [
     title: "plugin-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
     options: { plugins: ["pulverizer"] as any },
   },
   {
     title: "plugin-type-fail",
     shouldFail: true,
     input: "simple/index.js",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
     options: { plugins: "pulverizer" as any },
   },
   {

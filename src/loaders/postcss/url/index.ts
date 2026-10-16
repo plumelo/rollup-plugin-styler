@@ -71,7 +71,7 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
 
   return {
     postcssPlugin: name,
-
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     async Once(css, { result: res }) {
       if (!css.source?.input.file) return;
 
@@ -146,7 +146,7 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
         let resolved: UrlFile | undefined;
         for await (const basedir of basedirs) {
           try {
-            if (!resolved) resolved = await resolve(url, basedir);
+            resolved ??= await resolve(url, basedir);
           } catch {
             /* noop */
           }
@@ -187,7 +187,7 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
           to = normalizePath(assetDir, to);
           res.messages.push({ plugin: name, type: "asset", to, source });
         }
-
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         decl.value = parsed.toString();
       }
     },

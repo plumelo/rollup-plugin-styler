@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import path from "path";
 import { Plugin, OutputChunk, OutputAsset } from "rollup";
 import { createFilter } from "@rollup/pluginutils";

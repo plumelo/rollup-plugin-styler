@@ -39,13 +39,32 @@ export default tseslint.config(
     },
   },
 
-  // Browser globals for runtime/inject-css.js
+  // Type-aware rules for src and tests: replaces the old nested
+  // src/.eslintrc.cjs + __tests__/.eslintrc.cjs (root: true + project),
+  // keeping the same explicitly enabled rules
   {
-    files: ["runtime/inject-css.js"],
+    files: ["src/**/*.ts", "__tests__/**/*.ts"],
+    extends: [...tseslint.configs.recommendedTypeChecked],
     languageOptions: {
-      globals: {
-        ...globals.browser,
+      parserOptions: {
+        projectService: true,
       },
+    },
+    rules: {
+      "@typescript-eslint/default-param-last": "error",
+      "@typescript-eslint/naming-convention": "error",
+      "@typescript-eslint/prefer-for-of": "error",
+      "@typescript-eslint/prefer-nullish-coalescing": "error",
+      "@typescript-eslint/prefer-optional-chain": "error",
+      "@typescript-eslint/prefer-readonly": "error",
+      "@typescript-eslint/prefer-reduce-type-parameter": "error",
+      "@typescript-eslint/prefer-ts-expect-error": "error",
+      "@typescript-eslint/promise-function-async": "error",
+      "@typescript-eslint/return-await": "error",
+      "@typescript-eslint/unified-signatures": "error",
+      // new in v8: for await...of over sync iterables is the established
+      // idiom here, keeping sequential awaits out of no-await-in-loop's reach
+      "@typescript-eslint/await-thenable": "off",
     },
   },
 
@@ -56,6 +75,8 @@ export default tseslint.config(
       "import-x/resolver": {
         node: { extensions: [".mjs", ".js", ".cjs", ".json", ".ts"] },
       },
+      // analyze .ts imports with the TS parser so named exports are checked
+      "import-x/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] },
     },
   },
 
@@ -69,6 +90,7 @@ export default tseslint.config(
   {
     files: ["__tests__/**/*.{ts,js}"],
     ...jest.configs["flat/recommended"],
+    ...jest.configs["flat/style"],
   },
 
   // Custom rules
@@ -113,15 +135,16 @@ export default tseslint.config(
       "unicorn/no-array-reverse": "off",
       "unicorn/prefer-code-point": "off",
 
-      // import-x: can't verify named exports from .ts files without type info
-      "import-x/named": "off",
-
       // TS: allow createRequire (used for CJS interop)
       "@typescript-eslint/no-require-imports": "off",
       // TS: allow empty interfaces (used for type extension pattern)
       "@typescript-eslint/no-empty-object-type": "off",
       // TS: allow expression statements (used in test helpers)
       "@typescript-eslint/no-unused-expressions": "off",
+
+      // import-x reads runtime exports; named imports that are TS types
+      // (postcss, rollup, ...) are not runtime exports and false-positive
+      "import-x/named": "off",
     },
   },
 
