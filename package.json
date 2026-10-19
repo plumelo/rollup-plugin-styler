@@ -79,7 +79,7 @@
   "devDependencies": {
     "@babel/core": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
-    "@commitlint/cli": "^20.1.0",
+    "@commitlint/cli": "^21.2.3",
     "@commitlint/config-angular": "^19.0.0",
     "@commitlint/prompt-cli": "^19.0.0",
     "@eslint/js": "^10.0.0",
