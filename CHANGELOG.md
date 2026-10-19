@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/plumelo/rollup-plugin-styler/compare/v2.1.0...v2.1.1) (2026-10-19)
+
+
+### Bug Fixes
+
+* ship src corrections from the eslint migration ([2161350](https://github.com/plumelo/rollup-plugin-styler/commit/2161350a6208d7c44dc0db76143be6f4c41764f4))
+
 # [2.1.0](https://github.com/plumelo/rollup-plugin-styler/compare/v2.0.0...v2.1.0) (2026-07-31)
 
 
