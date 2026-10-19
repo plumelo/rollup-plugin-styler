@@ -48,6 +48,9 @@ pnpm add -D rollup-plugin-styler
 yarn add rollup-plugin-styler --dev
 ```
 
+> [!IMPORTANT]
+> This package is ESM-only: `import` it on any supported Node version. `require()` (Node >= 22.12) returns the ESM namespace, not the plugin factory — use `import`, or stay on v2.x for CJS configs.
+
 ## Usage
 
 ```js

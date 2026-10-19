@@ -26,11 +26,9 @@
   "type": "module",
   "exports": {
     "types": "./dist/index.d.ts",
-    "require": "./dist/index.cjs",
     "default": "./dist/index.js"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -42,7 +40,7 @@
   "scripts": {
     "prebuild": "shx rm -rf dist",
     "build": "rollup -c --environment NODE_ENV:production",
-    "postbuild": "shx cp -r src/shims dist && shx cp runtime/require-interop.cjs dist/index.cjs",
+    "postbuild": "shx cp -r src/shims dist",
     "commit": "commit",
     "predocs": "shx rm -rf docs",
     "docs": "typedoc",
