@@ -26,12 +26,9 @@
   "type": "module",
   "exports": {
     "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs",
-    "default": "./dist/index.cjs"
+    "default": "./dist/index.js"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -54,7 +51,7 @@
     "prepare": "is-ci || husky",
     "prepublishOnly": "npm run build",
     "release": "semantic-release",
-    "test": "jest"
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.0.0",

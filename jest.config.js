@@ -3,7 +3,7 @@ export default {
   testEnvironment: "node",
   extensionsToTreatAsEsm: [".ts"],
   transform: {
-    "^.+\\.tsx?$": ["ts-jest", { useESM: true, isolatedModules: true }],
+    "^.+\\.tsx?$": ["ts-jest", { useESM: true }],
     "^.+\\.jsx?$": "babel-jest",
   },
   testMatch: ["<rootDir>/__tests__/*.(spec|test).[jt]s?(x)"],

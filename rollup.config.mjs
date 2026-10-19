@@ -20,10 +20,11 @@ const config = [
   // Bundle
   {
     input: "./src/index.ts",
-    output: [
-      { format: "cjs", file: pkg.exports.require, exports: "default" },
-      { format: "es", file: pkg.exports.import, exports: "default" },
-    ],
+    output: {
+      format: "es",
+      file: pkg.exports.default,
+      exports: "default",
+    },
     plugins: [
       externals({ deps: true, devDeps: true }),
       replace({
