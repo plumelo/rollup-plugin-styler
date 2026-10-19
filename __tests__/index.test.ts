@@ -744,9 +744,9 @@ test("augment-chunk-hash", async () => {
 
   const [foo1, bar, foo2] = outputFiles;
 
-  const foo1Hash = foo1.split(".")[1];
-  const foo2Hash = foo1.split(".")[1];
-  const barHash = bar.split(".")[1];
+  const foo1Hash = foo1.split(".", 2)[1];
+  const foo2Hash = foo2.split(".", 2)[1];
+  const barHash = bar.split(".", 2)[1];
 
   // Verify that [hash] part of the filenames is truthy
   expect(foo1Hash).toBeTruthy();

@@ -9,7 +9,7 @@ export default async function (impl?: string): Promise<readonly [SassModule, str
     return import(impl)
       .then((provided: SassModule) => {
         if (provided) return [provided, impl] as const;
-        throw undefined;
+        throw new Error(`Could not load \`${impl}\` Sass implementation`);
       })
       .catch(() => {
         throw new Error(`Could not load \`${impl}\` Sass implementation`);

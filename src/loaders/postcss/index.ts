@@ -22,7 +22,7 @@ import { fileURLToPath } from "url";
 const baseDir = path.dirname(fileURLToPath(import.meta.url));
 
 let injectorId: string;
-const testing = process.env.NODE_ENV === "test";
+const isTesting = process.env.NODE_ENV === "test";
 
 const cssVarName = "css";
 const reservedWords = [cssVarName];
@@ -49,8 +49,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
     const options = { ...this.options };
     const config = await loadConfig(this.id, options.config);
     const plugins: AcceptedPlugin[] = [];
-    const autoModules = ensureAutoModules(options.autoModules, this.id);
-    const supportModules = Boolean(options.modules || autoModules);
+    const isAutoModules = ensureAutoModules(options.autoModules, this.id);
+    const isSupportModules = Boolean(options.modules || isAutoModules);
     const modulesExports: Record<string, string> = {};
 
     const postcssOpts: PostCSSOptions = {
@@ -86,11 +86,11 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     if (config.plugins) plugins.push(...config.plugins);
 
-    if (supportModules) {
+    if (isSupportModules) {
       const modulesOptions = typeof options.modules === "object" ? options.modules : {};
       plugins.push(
         ...postcssModules({
-          generateScopedName: testing ? "[name]_[local]" : undefined,
+          generateScopedName: isTesting ? "[name]_[local]" : undefined,
           failOnWrongOrder: true,
           ...modulesOptions,
         }),
@@ -184,7 +184,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
         const injectorCall = `${injectorName}(${cssVarName},${JSON.stringify(injectorOptions)});`;
 
         if (!injectorId) {
-          const opts = { basedirs: [path.join(testing ? process.cwd() : baseDir, "runtime")] };
+          const opts = { basedirs: [path.join(isTesting ? process.cwd() : baseDir, "runtime")] };
           injectorId = await resolveAsync(["./inject-css"], opts);
           injectorId = `"${normalizePath(injectorId)}"`;
         }
@@ -219,11 +219,11 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     if (!options.inject) output.push(`var ${modulesVarName} = ${JSON.stringify(modulesExports)};`);
 
-    const defaultExport = `export default ${supportModules ? modulesVarName : cssVarName};`;
+    const defaultExport = `export default ${isSupportModules ? modulesVarName : cssVarName};`;
     output.push(defaultExport);
 
     if (options.dts && (await fs.pathExists(this.id))) {
-      if (supportModules)
+      if (isSupportModules)
         dts.push(
           `interface ModulesExports ${JSON.stringify(modulesExports)}`,
 

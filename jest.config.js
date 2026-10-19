@@ -13,6 +13,5 @@ export default {
     "<rootDir>/__tests__/*.[jt]s?(x)",
     "<rootDir>/__tests__/helpers/*.[jt]s?(x)",
     "!**/*.d.ts",
-    "!**/.eslintrc.cjs",
   ],
 };

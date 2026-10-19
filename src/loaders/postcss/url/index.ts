@@ -146,7 +146,7 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
         let resolved: UrlFile | undefined;
         for await (const basedir of basedirs) {
           try {
-            if (!resolved) resolved = await resolve(url, basedir);
+            resolved ??= await resolve(url, basedir);
           } catch {
             /* noop */
           }

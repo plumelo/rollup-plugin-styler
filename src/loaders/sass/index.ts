@@ -31,7 +31,7 @@ const loader: Loader<SASSLoaderOptions> = {
 
     const render = async (options: Options): Promise<Result> =>
       new Promise((resolve, reject) => {
-        if (sync) resolve(sass.renderSync(options as Options<"sync">));
+        if (sync) resolve(sass.renderSync(options));
         else sass.render(options, (err, css) => (err ? reject(err) : resolve(css!)));
       });
 
