@@ -26,9 +26,8 @@
   "type": "module",
   "exports": {
     "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
     "require": "./dist/index.cjs",
-    "default": "./dist/index.cjs"
+    "default": "./dist/index.js"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -43,7 +42,7 @@
   "scripts": {
     "prebuild": "shx rm -rf dist",
     "build": "rollup -c --environment NODE_ENV:production",
-    "postbuild": "shx cp -r src/shims dist",
+    "postbuild": "shx cp -r src/shims dist && shx cp runtime/require-interop.cjs dist/index.cjs",
     "commit": "commit",
     "predocs": "shx rm -rf docs",
     "docs": "typedoc",
@@ -54,7 +53,7 @@
     "prepare": "is-ci || husky",
     "prepublishOnly": "npm run build",
     "release": "semantic-release",
-    "test": "jest"
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.0.0",

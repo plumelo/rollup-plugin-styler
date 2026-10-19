@@ -26,5 +26,3 @@ jobs:
 
       - name: Test
         run: npm run test
-        env:
-          NODE_OPTIONS: --experimental-vm-modules
