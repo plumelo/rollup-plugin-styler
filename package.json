@@ -96,7 +96,7 @@
     "@types/jest": "^29.0.0",
     "@types/less": "^3.0.6",
     "@types/mime-types": "^3.0.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^26.6.5",
     "@types/resolve": "^1.20.5",
     "@types/stylus": "^0.48.42",
     "@types/uglifycss": "^0.0.11",
