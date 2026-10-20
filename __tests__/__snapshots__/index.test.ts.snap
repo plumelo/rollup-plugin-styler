@@ -158,7 +158,7 @@ function injector_4a8cea7e (css, options) {
   }
 }
 
-var css = ".subpartial {\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\n              0 2px 5px #000;\\n          box-shadow: inset 0 2px 0px #dcffa6,\\n              0 2px 5px #000\\n}\\n\\n.partial {\\n    color: red\\n}\\n\\n.prefixed {\\n  display: -webkit-box;\\n  display: -webkit-flex;\\n  display: -moz-box;\\n  display: flex\\n}\\n";
+var css = ".subpartial {\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\n              0 2px 5px #000;\\n          box-shadow: inset 0 2px 0px #dcffa6,\\n              0 2px 5px #000\\n}\\n\\n.partial {\\n    color: red\\n}\\n\\n.prefixed {\\n  display: -webkit-box;\\n  display: -webkit-flex;\\n  display: flex\\n}\\n";
 injector_4a8cea7e(css,{});
 "
 `;
@@ -2097,7 +2097,6 @@ exports[`emit true: js 1`] = `
 const styles = css\`main {
   display: -webkit-box;
   display: -webkit-flex;
-  display: -moz-box;
   display: flex;
 }
 \`;
@@ -2967,13 +2966,13 @@ injector_3b481dac(css$5,{});
 var css$4 = ".bar{color:red}";
 injector_3b481dac(css$4,{});
 
-var css$3 = ".stylus{background:red;color:red}";
+var css$3 = ".stylus{color:red;background:red}";
 injector_3b481dac(css$3,{});
 
 var css$2 = ".pcss{color:red}";
 injector_3b481dac(css$2,{});
 
-var css$1 = ".sass{color:red;width:30%}";
+var css$1 = ".sass{width:30%;color:red}";
 injector_3b481dac(css$1,{});
 
 var css = ".less{color:#6c94be}";
