@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/plumelo/rollup-plugin-styler/compare/v3.0.0...v3.0.1) (2026-10-20)
+
+
+### Bug Fixes
+
+* **deps:** raise floors on vulnerable deps ([9399112](https://github.com/plumelo/rollup-plugin-styler/commit/9399112c3e161409ce501587c0e46ee7c502b324)), closes [#155](https://github.com/plumelo/rollup-plugin-styler/issues/155)
+
 # [3.0.0](https://github.com/plumelo/rollup-plugin-styler/compare/v2.1.1...v3.0.0) (2026-10-20)
 
 
