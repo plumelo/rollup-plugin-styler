@@ -1,3 +1,25 @@
+# [3.0.0](https://github.com/plumelo/rollup-plugin-styler/compare/v2.1.1...v3.0.0) (2026-10-20)
+
+
+### Code Refactoring
+
+* drop cjs build, esm-only package ([0cc2a4f](https://github.com/plumelo/rollup-plugin-styler/commit/0cc2a4ffc6b5e9ea7ed3d6e0abf90722da3a06c8))
+* drop cjs shim, go full esm-only ([d3e41df](https://github.com/plumelo/rollup-plugin-styler/commit/d3e41df1985b0d49da44085fd5d5da882d1fabc2))
+
+
+### BREAKING CHANGES
+
+* the package no longer ships a CommonJS entry.
+require() on Node >= 22.12 loads the ESM namespace ({ default })
+instead of the plugin factory; on Node 22.0-22.11 it fails with
+ERR_REQUIRE_ESM. Use import or stay on v2.x for require()-based
+configs.
+* dist/index.cjs is now an interop shim for the ESM
+output; loading the package with require() needs Node >= 22.12
+(require(esm)). On Node 22.0-22.11 or with require-only tooling on
+older Node, use ESM or a bundler instead. The plugin API (default
+export factory) is unchanged.
+
 ## [2.1.1](https://github.com/plumelo/rollup-plugin-styler/compare/v2.1.0...v2.1.1) (2026-10-19)
 
 
