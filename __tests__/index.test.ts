@@ -395,7 +395,8 @@ validateMany("extract", [
         const p = "[name][extname]";
         if (!name) return p;
         if (name.endsWith(".css")) return `css/${p}`;
-        return name.endsWith(".map") ? `map/${p}` : p;
+        if (name.endsWith(".map")) return `map/${p}`;
+        return p;
       },
     },
     options: { mode: "extract", sourceMap: true },
@@ -464,12 +465,8 @@ validateMany("sass", [
       sass: {
         sync: false,
         importer(url, _, done): void {
-          done({
-            contents:
-              url === "~modularvirtualimport"
-                ? ".modularvirtual{color:blue}"
-                : ".virtual{color:red}",
-          });
+          if (url === "~modularvirtualimport") done({ contents: ".modularvirtual{color:blue}" });
+          else done({ contents: ".virtual{color:red}" });
         },
       },
     },
@@ -481,12 +478,8 @@ validateMany("sass", [
       sass: {
         sync: true,
         importer(url: string): Data {
-          return {
-            contents:
-              url === "~modularvirtualimport"
-                ? ".modularvirtual{color:blue}"
-                : ".virtual{color:red}",
-          };
+          if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };
+          return { contents: ".virtual{color:red}" };
         },
       },
     },
@@ -635,7 +628,8 @@ validateMany("code-splitting", [
       manualChunks(id) {
         if (id.includes("third")) return "thirds";
         if (id.includes("fourth")) return "fourts";
-        return id.includes("nondynamic") ? "nondynamics" : "general";
+        if (id.includes("nondynamic")) return "nondynamics";
+        return "general";
       },
     },
   },
@@ -668,7 +662,8 @@ validateMany("code-splitting", [
       manualChunks(id) {
         if (id.includes("third")) return "thirds";
         if (id.includes("fourth")) return "fourts";
-        return id.includes("nondynamic") ? "nondynamics" : "general";
+        if (id.includes("nondynamic")) return "nondynamics";
+        return "general";
       },
     },
   },

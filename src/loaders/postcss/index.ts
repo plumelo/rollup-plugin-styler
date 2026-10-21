@@ -29,12 +29,14 @@ const reservedWords = [cssVarName];
 
 function getClassNameDefault(name: string): string {
   const id = makeLegalIdentifier(name);
-  return reservedWords.includes(id) ? `_${id}` : id;
+  if (reservedWords.includes(id)) return `_${id}`;
+  return id;
 }
 
 function ensureAutoModules(am: PostCSSLoaderOptions["autoModules"], id: string): boolean {
   if (typeof am === "function") return am(id);
-  return am instanceof RegExp ? am.test(id) : am && /\.module\.[A-Za-z]+$/.test(id);
+  if (am instanceof RegExp) return am.test(id);
+  return am && /\.module\.[A-Za-z]+$/.test(id);
 }
 
 type PostCSSOptions = PostCSSLoaderOptions["postcss"] &

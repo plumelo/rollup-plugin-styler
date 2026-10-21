@@ -8,7 +8,8 @@ import lessLoader from "./less";
 
 function matchFile(file: string, condition: Loader["test"]): boolean {
   if (!condition) return false;
-  return typeof condition === "function" ? condition(file) : condition.test(file);
+  if (typeof condition === "function") return condition(file);
+  return condition.test(file);
 }
 
 // This queue makes sure one thread is always available,

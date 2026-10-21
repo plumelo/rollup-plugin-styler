@@ -51,14 +51,16 @@ class MapModifier {
 
   resolve(dir = process.cwd()): this {
     return this.modifySources(source => {
-      return source === "<no source>" ? source : resolvePath(dir, source);
+      if (source === "<no source>") return source;
+      return resolvePath(dir, source);
     });
   }
 
   relative(dir = process.cwd()): this {
     return this.modifySources(source => {
       if (source === "<no source>") return source;
-      return isAbsolutePath(source) ? relativePath(dir, source) : normalizePath(source);
+      if (isAbsolutePath(source)) return relativePath(dir, source);
+      return normalizePath(source);
     });
   }
 
@@ -67,11 +69,13 @@ class MapModifier {
   }
 
   toString(): string | undefined {
-    return this.map ? JSON.stringify(this.map) : this.map;
+    if (!this.map) return this.map;
+    return JSON.stringify(this.map);
   }
 
   toConsumer(): SourceMapConsumer | undefined {
-    return this.map ? new SourceMapConsumer(this.map) : this.map;
+    if (!this.map) return this.map;
+    return new SourceMapConsumer(this.map);
   }
 
   toCommentData(): string {
@@ -82,7 +86,8 @@ class MapModifier {
   }
 
   toCommentFile(fileName: string): string {
-    return this.map ? `\n/*# sourceMappingURL=${fileName} */` : "";
+    if (!this.map) return "";
+    return `\n/*# sourceMappingURL=${fileName} */`;
   }
 }
 

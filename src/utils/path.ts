@@ -6,7 +6,8 @@ export const isRelativePath = (path: string): boolean => /^\.?\.[/\\]/.test(path
 
 export function normalizePath(...paths: string[]): string {
   const f = path.join(...paths).replaceAll("\\", "/");
-  return /^\.[/\\]/.test(paths[0]) ? `./${f}` : f;
+  if (/^\.[/\\]/.test(paths[0])) return `./${f}`;
+  return f;
 }
 
 export const resolvePath = (...paths: string[]): string => normalizePath(path.resolve(...paths));

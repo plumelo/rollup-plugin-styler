@@ -10,7 +10,6 @@ export function getUrlOfPartial(url: string): string {
 
 export function normalizeUrl(url: string): string {
   if (isModule(url)) return normalizePath(url.slice(1));
-  return isAbsolutePath(url) || isRelativePath(url)
-    ? normalizePath(url)
-    : `./${normalizePath(url)}`;
+  if (isAbsolutePath(url) || isRelativePath(url)) return normalizePath(url);
+  return `./${normalizePath(url)}`;
 }

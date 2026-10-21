@@ -138,6 +138,8 @@ export default tseslint.config(
       // the house /** x */ doc-comment style
       "unicorn/no-asterisk-prefix-in-documentation-comments": "off",
       "unicorn/single-line-block-comment-style": "off",
+      // v78: rewrites if/return tails into ternaries; house style is if/return
+      "unicorn/prefer-ternary": "off",
 
       // TS: allow createRequire (used for CJS interop)
       "@typescript-eslint/no-require-imports": "off",

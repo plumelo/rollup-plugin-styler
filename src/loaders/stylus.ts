@@ -46,7 +46,8 @@ const loader: Loader<StylusLoaderOptions> = {
         style.sourcemap.sources.map(async source => {
           const file = normalizePath(basePath, source);
           const exists = await fs.pathExists(file);
-          return exists ? fs.readFile(file, "utf8") : (null as unknown as string);
+          if (!exists) return null as unknown as string;
+          return fs.readFile(file, "utf8");
         }),
       );
     }
