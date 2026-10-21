@@ -105,7 +105,7 @@
     "eslint-plugin-import-x": "^4.0.0",
     "eslint-plugin-jest": "^29.0.0",
     "eslint-plugin-unicorn": "^78.0.0",
-    "gh-pages": "^6.0.0",
+    "gh-pages": "~6.1.1",
     "globals": "^17.0.0",
     "husky": "^9.0.0",
     "is-ci": "^4.0.0",
@@ -121,7 +121,7 @@
     "rollup-plugin-node-externals": "^9.0.0",
     "sass": "^1.69.5",
     "semantic-release": "^25.0.1",
-    "shx": "^0.4.0",
+    "shx": "^0.3.4",
     "stylus": "^0.61.0",
     "sugarss": "^5.0.0",
     "ts-jest": "^29.0.0",
@@ -135,5 +135,10 @@
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "overrides": {
+    "js-yaml@^3.13.0": {
+      "argparse": "^2.0.0"
+    }
   }
 }
