@@ -50,7 +50,7 @@
     "lint-staged": "lint-staged",
     "prepare": "is-ci || husky",
     "prepublishOnly": "npm run build",
-    "release": "npx -y -p semantic-release@25.0.9 -p @semantic-release/changelog@7.0.0 -p @semantic-release/git@11.0.1 semantic-release",
+    "release": "semantic-release",
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
   },
   "dependencies": {
@@ -125,7 +125,10 @@
     "typedoc": "^0.28.20",
     "typedoc-plugin-missing-exports": "^4.1.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.0.0"
+    "typescript-eslint": "^8.0.0",
+    "semantic-release": "^25.0.1",
+    "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/git": "^11.0.0"
   },
   "peerDependencies": {
     "rollup": "^2.63.0 || ^3.0.0 || ^4.0.0"
