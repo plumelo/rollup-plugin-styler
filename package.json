@@ -50,7 +50,7 @@
     "lint-staged": "lint-staged",
     "prepare": "is-ci || husky",
     "prepublishOnly": "npm run build",
-    "release": "semantic-release",
+    "release": "npx -y -p semantic-release@25.0.9 -p @semantic-release/changelog@7.0.0 -p @semantic-release/git@11.0.1 semantic-release",
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
   },
   "dependencies": {
@@ -87,8 +87,6 @@
     "@rollup/plugin-replace": "^6.0.0",
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.0.0",
-    "@semantic-release/changelog": "^7.0.0",
-    "@semantic-release/git": "^11.0.0",
     "@types/fs-extra": "^11.0.0",
     "@types/jest": "^30.0.0",
     "@types/less": "^3.0.6",
@@ -120,7 +118,6 @@
     "rollup-plugin-lit-css": "^6.0.1",
     "rollup-plugin-node-externals": "^9.0.0",
     "sass": "^1.69.5",
-    "semantic-release": "^25.0.1",
     "shx": "^0.3.4",
     "stylus": "^0.61.0",
     "sugarss": "^5.0.0",
