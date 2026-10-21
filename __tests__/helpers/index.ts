@@ -49,12 +49,9 @@ export async function write(data: WriteData): Promise<WriteResult> {
     input,
     plugins: data.plugins ?? [styles(data.options)],
     onwarn: (warning, warn) => {
-      if (
-        warning.code === "EMPTY_BUNDLE" ||
-        warning.exporter === "lit" ||
-        /Exported `\S+` as `\S+` in \S+/.test(warning.message)
-      )
-        return;
+      if (warning.code === "EMPTY_BUNDLE") return;
+      if (warning.exporter === "lit") return;
+      if (/Exported `\S+` as `\S+` in \S+/.test(warning.message)) return;
       warn(warning);
     },
   });

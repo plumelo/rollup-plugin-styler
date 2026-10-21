@@ -65,9 +65,10 @@ export default (options: Options = {}): Plugin => {
     name: "styles",
 
     async transform(code, id) {
-      // Skip files not included, not supported by loaders, or empty
-      if (!isIncluded(id) || !loaders.isSupported(id) || code.replaceAll(/\s/g, "") === "")
-        return null;
+      if (!isIncluded(id) || !loaders.isSupported(id)) return null;
+
+      // Skip empty files
+      if (code.replaceAll(/\s/g, "") === "") return null;
 
       // Check if file was already processed into JS
       // by other instance(s) of this or other plugin(s)
@@ -299,37 +300,37 @@ export default (options: Options = {}): Plugin => {
         };
         const cssFileId = this.emitFile(cssFile);
 
-        if (!(res.map && sourceMap)) continue;
+        if (res.map && sourceMap) {
+          const fileName = this.getFileName(cssFileId);
 
-        const fileName = this.getFileName(cssFileId);
+          const assetDir =
+            typeof opts.assetFileNames === "string"
+              ? normalizePath(path.dirname(opts.assetFileNames))
+              : typeof opts.assetFileNames === "function"
+                ? normalizePath(path.dirname(opts.assetFileNames(cssFile)))
+                : "assets"; // Default for Rollup v2
 
-        const assetDir =
-          typeof opts.assetFileNames === "string"
-            ? normalizePath(path.dirname(opts.assetFileNames))
-            : typeof opts.assetFileNames === "function"
-              ? normalizePath(path.dirname(opts.assetFileNames(cssFile)))
-              : "assets"; // Default for Rollup v2
+          const map = mm(res.map)
+            .modify(m => (m.file = path.basename(fileName)))
+            .modifySources(s => {
+              // Compensate for possible nesting depending on `assetFileNames` value
+              if (s === "<no source>") return s;
+              if (assetDir.length <= 1) return s;
+              s = `../${s}`; // ...then there's definitely at least 1 level offset
+              for (const c of assetDir) if (c === "/") s = `../${s}`;
+              return s;
+            });
 
-        const map = mm(res.map)
-          .modify(m => (m.file = path.basename(fileName)))
-          .modifySources(s => {
-            // Compensate for possible nesting depending on `assetFileNames` value
-            if (s === "<no source>") return s;
-            if (assetDir.length <= 1) return s;
-            s = `../${s}`; // ...then there's definitely at least 1 level offset
-            for (const c of assetDir) if (c === "/") s = `../${s}`;
-            return s;
-          });
-
-        if (sourceMap.inline) {
-          map.modify(m => sourceMap.transform?.(m, normalizePath(dir, fileName)));
-          (bundle[fileName] as OutputAsset).source += map.toCommentData();
-        } else {
-          const mapFileName = `${fileName}.map`;
-          map.modify(m => sourceMap.transform?.(m, normalizePath(dir, mapFileName)));
-          this.emitFile({ type: "asset", fileName: mapFileName, source: map.toString() });
-          const { base } = path.parse(mapFileName);
-          (bundle[fileName] as OutputAsset).source += map.toCommentFile(base);
+          if (sourceMap.inline) {
+            map.modify(m => sourceMap.transform?.(m, normalizePath(dir, fileName)));
+            (bundle[fileName] as OutputAsset).source += map.toCommentData();
+          } else {
+            const mapFileName = `${fileName}.map`;
+            map.modify(m => sourceMap.transform?.(m, normalizePath(dir, mapFileName)));
+            this.emitFile({ type: "asset", fileName: mapFileName, source: map.toString() });
+            const { base } = path.parse(mapFileName);
+            (bundle[fileName] as OutputAsset).source += map.toCommentFile(base);
+          }
         }
       }
     },

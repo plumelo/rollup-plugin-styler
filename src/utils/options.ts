@@ -9,7 +9,8 @@ export function inferOption<T, TDef extends T | boolean>(
   defaultValue: TDef,
 ): T | false | TDef {
   if (typeof option === "boolean") return option && ({} as TDef);
-  return typeof option === "object" ? option : defaultValue;
+  if (typeof option === "object") return option;
+  return defaultValue;
 }
 
 interface Mode {
@@ -35,7 +36,8 @@ export function inferModeOption(mode: Options["mode"]): Mode {
 
 export function inferSourceMapOption(sourceMap: Options["sourceMap"]): LoaderContext["sourceMap"] {
   const sm = Array.isArray(sourceMap) ? sourceMap : ([sourceMap] as const);
-  return sm[0] ? { content: true, ...sm[1], inline: sm[0] === "inline" } : false;
+  if (!sm[0]) return false;
+  return { content: true, ...sm[1], inline: sm[0] === "inline" };
 }
 
 export function inferHandlerOption<T extends { alias?: Record<string, string> }>(
@@ -89,9 +91,13 @@ export async function ensurePCSSPlugins(plugins: Options["plugins"]): Promise<Ac
     }
 
     const [plug, opts] = p;
-    // eslint-disable-next-line no-await-in-loop
-    const pcssPlugin = await ensurePCSSOption(plug, "plugin");
-    ps.push(opts ? pcssPlugin(opts) : pcssPlugin);
+    if (opts) {
+      // eslint-disable-next-line no-await-in-loop
+      ps.push((await ensurePCSSOption(plug, "plugin"))(opts));
+    } else {
+      // eslint-disable-next-line no-await-in-loop
+      ps.push(await ensurePCSSOption(plug, "plugin"));
+    }
   }
 
   return ps;
