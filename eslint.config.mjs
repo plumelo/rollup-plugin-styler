@@ -134,6 +134,12 @@ export default tseslint.config(
       "unicorn/no-declarations-before-early-exit": "off",
       "unicorn/no-array-reverse": "off",
       "unicorn/prefer-code-point": "off",
+      "unicorn/no-asterisk-prefix-in-documentation-comments": "off",
+      "unicorn/single-line-block-comment-style": "off",
+      "unicorn/prefer-ternary": "off",
+      "unicorn/prefer-continue": "off",
+      "unicorn/prefer-combined-guards": "off",
+      "unicorn/no-unnecessary-parameters": "off",
 
       // TS: allow createRequire (used for CJS interop)
       "@typescript-eslint/no-require-imports": "off",

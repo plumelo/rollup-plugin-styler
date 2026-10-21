@@ -8,12 +8,12 @@ export default (placeholder: string, file: string, source: Uint8Array): string =
   const { dir, name, ext, base } = path.parse(file);
   const hash = hasher(`${base}:${Buffer.from(source).toString()}`);
   const match = hashRe.exec(placeholder);
-  const hashLen = match && Number.parseInt(match[1]);
+  const hashLen = match ? Number.parseInt(match[1]) : 0;
   return placeholder
     .replace("[dir]", path.basename(dir))
     .replace("[name]", name)
     .replace("[extname]", ext)
     .replace(".[ext]", ext)
     .replace("[ext]", ext.slice(1))
-    .replace(hashRe, hashLen ? hash.slice(0, hashLen) : hash.slice(0, 8));
+    .replace(hashRe, hash.slice(0, hashLen || 8));
 };
