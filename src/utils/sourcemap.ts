@@ -32,9 +32,7 @@ class MapModifier {
       try {
         this.map = JSON.parse(map) as RawSourceMap;
       } catch {
-        /*
-        noop
-        */
+        /* noop */
       }
     else this.map = map;
   }

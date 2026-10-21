@@ -2,27 +2,17 @@ import fs from "fs-extra";
 import qs from "query-string";
 import { resolveAsync } from "../../../utils/resolve";
 
-/**
-File resolved by URL resolver
-*/
+/** File resolved by URL resolver */
 export interface UrlFile {
-  /**
-  Absolute path to file
-  */
+  /** Absolute path to file */
   from: string;
-  /**
-  File source
-  */
+  /** File source */
   source: Uint8Array;
-  /**
-  Original query extracted from the input path
-  */
+  /** Original query extracted from the input path */
   urlQuery?: string;
 }
 
-/**
-URL resolver
-*/
+/** URL resolver */
 export type UrlResolve = (inputUrl: string, basedir: string) => Promise<UrlFile>;
 
 const resolve: UrlResolve = async (inputUrl, basedir) => {

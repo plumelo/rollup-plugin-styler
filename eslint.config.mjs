@@ -134,6 +134,10 @@ export default tseslint.config(
       "unicorn/no-declarations-before-early-exit": "off",
       "unicorn/no-array-reverse": "off",
       "unicorn/prefer-code-point": "off",
+      // v78: asterisk-less JSDoc rewrite churns the whole tree and fights
+      // the house /** x */ doc-comment style
+      "unicorn/no-asterisk-prefix-in-documentation-comments": "off",
+      "unicorn/single-line-block-comment-style": "off",
 
       // TS: allow createRequire (used for CJS interop)
       "@typescript-eslint/no-require-imports": "off",

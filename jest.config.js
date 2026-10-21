@@ -1,6 +1,4 @@
-/**
-@type {import('ts-jest').InitialOptionsTsJest}
-*/
+/** @type {import('ts-jest').InitialOptionsTsJest} */
 export default {
   testEnvironment: "node",
   extensionsToTreatAsEsm: [".ts"],

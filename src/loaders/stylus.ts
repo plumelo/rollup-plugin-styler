@@ -5,9 +5,7 @@ import { normalizePath } from "../utils/path";
 import { Loader } from "./types";
 import { RawSourceMap } from "source-map-js";
 
-/**
-Options for Stylus loader
-*/
+/** Options for Stylus loader */
 export interface StylusLoaderOptions extends Record<string, unknown>, stylus.PublicOptions {}
 
 const loader: Loader<StylusLoaderOptions> = {
