@@ -134,13 +134,8 @@ export default tseslint.config(
       "unicorn/no-declarations-before-early-exit": "off",
       "unicorn/no-array-reverse": "off",
       "unicorn/prefer-code-point": "off",
-      // v78: asterisk-less JSDoc rewrite churns the whole tree and fights
-      // the house /** x */ doc-comment style
-      // v78: asterisk-less JSDoc rewrite churns the whole tree and fights
-      // the house /** x */ doc-comment style
       "unicorn/no-asterisk-prefix-in-documentation-comments": "off",
       "unicorn/single-line-block-comment-style": "off",
-      // v78: rewrite-style rules; the house style is if/return and explicit guards
       "unicorn/prefer-ternary": "off",
       "unicorn/prefer-continue": "off",
       "unicorn/prefer-combined-guards": "off",
