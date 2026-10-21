@@ -1,6 +1,4 @@
-import type { LegacyAsyncImporter, LegacySyncImporter } from "sass/types/legacy/importer";
-import type { LegacyOptions } from "sass/types/legacy/options";
-import type { LegacyResult } from "sass/types/legacy/render";
+import type { LegacyAsyncImporter, LegacySyncImporter, LegacyOptions, LegacyResult } from "sass";
 
 export type SassModule = typeof import("sass");
 export type SyncImporter = LegacySyncImporter;
