@@ -10,15 +10,25 @@ interface Package extends PackageJSON {}
 type PackageFilterFn = (pkg: Package, pkgfile: string) => Package;
 
 export interface ResolveOpts {
-  /** name of the caller for error message (default to `Resolver`) */
+  /**
+  name of the caller for error message (default to `Resolver`)
+  */
   caller?: string;
-  /** directories to begin resolving from (defaults to `[__dirname]`) */
+  /**
+  directories to begin resolving from (defaults to `[__dirname]`)
+  */
   basedirs?: string[];
-  /** array of file extensions to search in order (defaults to `[".mjs", ".js", ".cjs", ".json"]`) */
+  /**
+  array of file extensions to search in order (defaults to `[".mjs", ".js", ".cjs", ".json"]`)
+  */
   extensions?: string | ReadonlyArray<string>;
-  /** don't resolve `basedirs` to real path before resolving. (defaults to `true`) */
+  /**
+  don't resolve `basedirs` to real path before resolving. (defaults to `true`)
+  */
   preserveSymlinks?: boolean;
-  /** transform the parsed `package.json` contents before looking at the "main" field */
+  /**
+  transform the parsed `package.json` contents before looking at the "main" field
+  */
   packageFilter?: PackageFilterFn;
 }
 
@@ -53,7 +63,9 @@ export const packageFilterBuilder: PackageFilterBuilderFn = (opts = {}) => {
         return pkg;
       }
     } catch {
-      /* noop */
+      /*
+      noop
+      */
     }
 
     // Check independent fields
@@ -64,7 +76,9 @@ export const packageFilterBuilder: PackageFilterBuilderFn = (opts = {}) => {
         return pkg;
       }
     } catch {
-      /* noop */
+      /*
+      noop
+      */
     }
 
     return pkg;

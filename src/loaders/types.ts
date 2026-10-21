@@ -2,74 +2,112 @@ import * as rollup from "rollup";
 import { RawSourceMap } from "source-map-js";
 
 /**
- * Loader
- * @param T type of loader's options
- */
+Loader
+@param T type of loader's options
+*/
 export interface Loader<T = Record<string, unknown>> {
-  /** Name */
+  /**
+  Name
+  */
   name: string;
   /**
-   * Test to control if file should be processed.
-   * Also used for plugin's supported files test.
-   */
+  Test to control if file should be processed.
+  Also used for plugin's supported files test.
+  */
   test?: RegExp | ((file: string) => boolean);
-  /** Skip testing, always process the file */
+  /**
+  Skip testing, always process the file
+  */
   alwaysProcess?: boolean;
-  /** Function for processing */
+  /**
+  Function for processing
+  */
   process: (this: LoaderContext<T>, payload: Payload) => Promise<Payload> | Payload;
 }
 
 /**
- * Loader's context
- * @param T type of loader's options
- */
+Loader's context
+@param T type of loader's options
+*/
 export interface LoaderContext<T = Record<string, unknown>> {
   /**
-   * Loader's options
-   * @default {}
-   */
+  Loader's options
+  @default {}
+  */
   readonly options: T;
-  /** @see {@link Options.sourceMap} */
+  /**
+  @see {@link Options.sourceMap}
+  */
   readonly sourceMap: false | ({ inline: boolean } & SourceMapOptions);
-  /** Resource path */
+  /**
+  Resource path
+  */
   readonly id: string;
-  /** Files to watch */
+  /**
+  Files to watch
+  */
   readonly deps: Set<string>;
-  /** Assets to emit */
+  /**
+  Assets to emit
+  */
   readonly assets: Map<string, Uint8Array>;
-  /** [Plugin's context](https://rollupjs.org/guide/en#plugin-context) */
+  /**
+  [Plugin's context](https://rollupjs.org/guide/en#plugin-context)
+  */
   readonly plugin: rollup.PluginContext;
-  /** [Function for emitting a warning](https://rollupjs.org/guide/en/#thiswarnwarning-string--rollupwarning-position-number---column-number-line-number---void) */
+  /**
+  [Function for emitting a warning](https://rollupjs.org/guide/en/#thiswarnwarning-string--rollupwarning-position-number---column-number-line-number---void)
+  */
   readonly warn: rollup.PluginContext["warn"];
 }
 
-/** Extracted data */
+/**
+Extracted data
+*/
 export interface Extracted {
-  /** Source file path */
+  /**
+  Source file path
+  */
   id: string;
-  /** CSS */
+  /**
+  CSS
+  */
   css: string;
-  /** Sourcemap */
+  /**
+  Sourcemap
+  */
   map?: string;
 }
 
-/** Loader's payload */
+/**
+Loader's payload
+*/
 export interface Payload {
-  /** File content */
+  /**
+  File content
+  */
   code: string;
-  /** Sourcemap */
+  /**
+  Sourcemap
+  */
   map?: string;
-  /** Extracted data */
+  /**
+  Extracted data
+  */
   extracted?: Extracted;
 }
 
-/** Options for sourcemaps */
+/**
+Options for sourcemaps
+*/
 export interface SourceMapOptions {
   /**
-   * Include sources content
-   * @default true
-   */
+  Include sources content
+  @default true
+  */
   content?: boolean;
-  /** Function for transforming resulting sourcemap */
+  /**
+  Function for transforming resulting sourcemap
+  */
   transform?: (map: RawSourceMap, name?: string) => void;
 }

@@ -29,12 +29,12 @@ export const walkUrls = (
           continue;
         }
 
-        if (nNode.type === "function" && urlFuncRe.test(nNode.value)) {
-          const { nodes } = nNode;
-          const [urlNode] = nodes;
-          const url = urlNode?.type === "string" ? urlNode.value : valueParser.stringify(nodes);
-          callback(url.replaceAll(/^\s+|\s+$/g, ""), urlNode);
-        }
+        if (nNode.type !== "function" || !urlFuncRe.test(nNode.value)) continue;
+
+        const { nodes } = nNode;
+        const [urlNode] = nodes;
+        const url = urlNode?.type === "string" ? urlNode.value : valueParser.stringify(nodes);
+        callback(url.replaceAll(/^\s+|\s+$/g, ""), urlNode);
       }
     }
   });

@@ -7,24 +7,26 @@ import resolveDefault, { ImportResolve } from "./resolve";
 const name = "styles-import";
 const extensionsDefault = [".css", ".pcss", ".postcss", ".sss"];
 
-/** `@import` handler options */
+/**
+`@import` handler options
+*/
 export interface ImportOptions {
   /**
-   * Provide custom resolver for imports
-   * in place of the default one
-   */
+  Provide custom resolver for imports
+  in place of the default one
+  */
   resolve?: ImportResolve;
   /**
-   * Aliases for import paths.
-   * Overrides the global `alias` option.
-   * - ex.: `{"foo":"bar"}`
-   */
+  Aliases for import paths.
+  Overrides the global `alias` option.
+  - ex.: `{"foo":"bar"}`
+  */
   alias?: Record<string, string>;
   /**
-   * Import files ending with these extensions.
-   * Overrides the global `extensions` option.
-   * @default [".css", ".pcss", ".postcss", ".sss"]
-   */
+  Import files ending with these extensions.
+  Overrides the global `extensions` option.
+  @default [".css", ".pcss", ".postcss", ".sss"]
+  */
   extensions?: string[];
 }
 

@@ -13,46 +13,48 @@ const name = "styles-url";
 const placeholderHashDefault = "assets/[name]-[hash][extname]";
 const placeholderNoHashDefault = "assets/[name][extname]";
 
-/** URL handler options */
+/**
+URL handler options
+*/
 export interface UrlOptions {
   /**
-   * Inline files instead of copying
-   * @default true for `inject` mode, otherwise false
-   */
+  Inline files instead of copying
+  @default true for `inject` mode, otherwise false
+  */
   inline?: boolean;
   /**
-   * Public Path for URLs in CSS files
-   * @default "./"
-   */
+  Public Path for URLs in CSS files
+  @default "./"
+  */
   publicPath?: string;
   /**
-   * Directory path for outputted CSS assets,
-   * which is not included into resulting URL
-   * @default "."
-   */
+  Directory path for outputted CSS assets,
+  which is not included into resulting URL
+  @default "."
+  */
   assetDir?: string;
   /**
-   * Enable/disable name generation with hash for outputted CSS assets
-   * or provide your own placeholder with the following blocks:
-   * - `[extname]`: The file extension of the asset including a leading dot, e.g. `.png`.
-   * - `[ext]`: The file extension without a leading dot, e.g. `png`.
-   * - `[hash(:<num>)]`: A hash based on the name and content of the asset (with optional length).
-   * - `[name]`: The file name of the asset excluding any extension.
-   *
-   * Forward slashes / can be used to place files in sub-directories.
-   * @default "assets/[name]-[hash][extname]" ("assets/[name][extname]" if false)
-   */
+  Enable/disable name generation with hash for outputted CSS assets
+  or provide your own placeholder with the following blocks:
+  - `[extname]`: The file extension of the asset including a leading dot, e.g. `.png`.
+  - `[ext]`: The file extension without a leading dot, e.g. `png`.
+  - `[hash(:<num>)]`: A hash based on the name and content of the asset (with optional length).
+  - `[name]`: The file name of the asset excluding any extension.
+  
+  Forward slashes / can be used to place files in sub-directories.
+  @default "assets/[name]-[hash][extname]" ("assets/[name][extname]" if false)
+  */
   hash?: boolean | string;
   /**
-   * Provide custom resolver for URLs
-   * in place of the default one
-   */
+  Provide custom resolver for URLs
+  in place of the default one
+  */
   resolve?: UrlResolve;
   /**
-   * Aliases for URL paths.
-   * Overrides the global `alias` option.
-   * - ex.: `{"foo":"bar"}`
-   */
+  Aliases for URL paths.
+  Overrides the global `alias` option.
+  - ex.: `{"foo":"bar"}`
+  */
   alias?: Record<string, string>;
 }
 
@@ -148,7 +150,9 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
           try {
             resolved ??= await resolve(url, basedir);
           } catch {
-            /* noop */
+            /*
+            noop
+            */
           }
         }
 

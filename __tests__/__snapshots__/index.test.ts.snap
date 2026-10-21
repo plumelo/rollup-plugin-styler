@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`basic empty: js 1`] = `
 "
@@ -515,18 +515,14 @@ exports[`code-splitting manual-chunks: css 3`] = `
 ".first_first_sub {
   color: black;
 }
-/*# sourceMappingURL=index-CbxePgMx.css.map */
 /*# sourceMappingURL=index-CbxePgMx.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 4`] = `
-".first_first_sub {
-  color: black;
-}
-.nestedScript_nestedScript {
+".nestedScript_nestedScript {
   color: rebeccapurple;
 }
-/*# sourceMappingURL=nested-script-DuhydVVs.css.map */"
+/*# sourceMappingURL=nested-script-DkmzP6FN.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 5`] = `
@@ -581,14 +577,18 @@ export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 `;
 
 exports[`code-splitting manual-chunks: js 3`] = `
+"console.log("sub");
+"
+`;
+
+exports[`code-splitting manual-chunks: js 4`] = `
 "import { m as modules_d55e0e9b } from './fourts-BP89xo1e.js';
-import './nested-script-MoN0W8vn.js';
-import './nondynamics-CYQNmqgG.js';
+import './index-BoTU-xWk.js';
 
 (async () => {
   const first = await import('./first-D0hqA3Xf.js');
   const second = await import('./second-D5ePGhEs.js');
-  const otherScript = await import('./other-script-I6BGCDCS.js');
+  const otherScript = await import('./other-script-HJQMEjTp.js');
   console.log(first, second, otherScript);
 })();
 
@@ -596,15 +596,14 @@ console.log(modules_d55e0e9b);
 "
 `;
 
-exports[`code-splitting manual-chunks: js 4`] = `
+exports[`code-splitting manual-chunks: js 5`] = `
 "import { a as modules_3ede29d3 } from './fourts-BP89xo1e.js';
-import './nested-script-MoN0W8vn.js';
-import './nondynamics-CYQNmqgG.js';
+import './index-BoTU-xWk.js';
 
 (async () => {
   const first = await import('./first-D0hqA3Xf.js');
   const second = await import('./second-D5ePGhEs.js');
-  const otherScript = await import('./other-script-I6BGCDCS.js');
+  const otherScript = await import('./other-script-HJQMEjTp.js');
   console.log(first, second, otherScript);
 })();
 
@@ -612,35 +611,33 @@ console.log(modules_3ede29d3);
 "
 `;
 
-exports[`code-splitting manual-chunks: js 5`] = `
-"import './nondynamics-CYQNmqgG.js';
-
-console.log("sub");
-"
-`;
-
 exports[`code-splitting manual-chunks: js 6`] = `
-"console.log("noncss");
+"import './nondynamics-CYQNmqgG.js';
 "
 `;
 
 exports[`code-splitting manual-chunks: js 7`] = `
+"console.log("noncss");
+"
+`;
+
+exports[`code-splitting manual-chunks: js 8`] = `
 "var modules_2539eb5b = {"nondynamic2":"nondynamic2_nondynamic2"};
 
 console.log(modules_2539eb5b);
 "
 `;
 
-exports[`code-splitting manual-chunks: js 8`] = `
+exports[`code-splitting manual-chunks: js 9`] = `
 "(async () => {
   await import('./noncss-B2j3p-Ke.js');
-  const nestedScript = await import('./nested-script-MoN0W8vn.js');
+  const nestedScript = await import('./nested-script-LcDvje3V.js');
   console.log(nestedScript);
 })();
 "
 `;
 
-exports[`code-splitting manual-chunks: js 9`] = `
+exports[`code-splitting manual-chunks: js 10`] = `
 "var css = ".second_second {\\n  color: royalblue;\\n}";
 var modules_7a038d99 = {"second":"second_second"};
 
@@ -648,7 +645,7 @@ export { css, modules_7a038d99 as default };
 "
 `;
 
-exports[`code-splitting manual-chunks: js 10`] = `
+exports[`code-splitting manual-chunks: js 11`] = `
 "
 "
 `;
@@ -659,7 +656,7 @@ exports[`code-splitting manual-chunks: map 2`] = `"{"version":3,"sources":["../.
 
 exports[`code-splitting manual-chunks: map 3`] = `"{"version":3,"sources":["../../../../code-splitting/sub/first.scss"],"names":[],"mappings":"AAAA;EACE,YAAA;AACF","file":"index-CbxePgMx.css","sourcesContent":[".first_sub {\\n  color: black;\\n}\\n"]}"`;
 
-exports[`code-splitting manual-chunks: map 4`] = `"{"version":3,"sources":["../../../../code-splitting/sub/first.scss","../../../../code-splitting/nested-script.scss"],"names":[],"mappings":"AAAA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF","file":"nested-script-DuhydVVs.css","sourcesContent":[".first_sub {\\n  color: black;\\n}\\n",".nested-script {\\n  color: rebeccapurple;\\n}\\n"]}"`;
+exports[`code-splitting manual-chunks: map 4`] = `"{"version":3,"sources":["../../../../code-splitting/nested-script.scss"],"names":[],"mappings":"AAAA;EACE,oBAAA;AACF","file":"nested-script-DkmzP6FN.css","sourcesContent":[".nested-script {\\n  color: rebeccapurple;\\n}\\n"]}"`;
 
 exports[`code-splitting manual-chunks: map 5`] = `"{"version":3,"sources":["../../../../code-splitting/nondynamic.scss","../../../../code-splitting/nondynamic2.scss"],"names":[],"mappings":"AAAA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF","file":"nondynamics-Bv0e41YY.css","sourcesContent":[".nondynamic {\\n  color: deepskyblue;\\n}\\n",".nondynamic2 {\\n  color: deeppink;\\n}\\n"]}"`;
 
@@ -974,6 +971,12 @@ exports[`code-splitting manual-chunks-single: css 1`] = `
 .nondynamic2_nondynamic2 {
   color: deeppink;
 }
+.first_first_sub {
+  color: black;
+}
+.nestedScript_nestedScript {
+  color: rebeccapurple;
+}
 .first_partial {
   color: rosybrown;
 }
@@ -986,13 +989,7 @@ exports[`code-splitting manual-chunks-single: css 1`] = `
 .otherScript_otherScript {
   color: wheat;
 }
-.first_first_sub {
-  color: black;
-}
-.nestedScript_nestedScript {
-  color: rebeccapurple;
-}
-/*# sourceMappingURL=extracted-BMW8fUXh.css.map */"
+/*# sourceMappingURL=extracted-DLVyn32M.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-single: js 1`] = `
@@ -1013,14 +1010,18 @@ export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 `;
 
 exports[`code-splitting manual-chunks-single: js 3`] = `
+"console.log("sub");
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 4`] = `
 "import { m as modules_d55e0e9b } from './fourts-BP89xo1e.js';
-import './nested-script-MoN0W8vn.js';
-import './nondynamics-CYQNmqgG.js';
+import './index-BoTU-xWk.js';
 
 (async () => {
   const first = await import('./first-D0hqA3Xf.js');
   const second = await import('./second-D5ePGhEs.js');
-  const otherScript = await import('./other-script-I6BGCDCS.js');
+  const otherScript = await import('./other-script-HJQMEjTp.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1028,15 +1029,14 @@ console.log(modules_d55e0e9b);
 "
 `;
 
-exports[`code-splitting manual-chunks-single: js 4`] = `
+exports[`code-splitting manual-chunks-single: js 5`] = `
 "import { a as modules_3ede29d3 } from './fourts-BP89xo1e.js';
-import './nested-script-MoN0W8vn.js';
-import './nondynamics-CYQNmqgG.js';
+import './index-BoTU-xWk.js';
 
 (async () => {
   const first = await import('./first-D0hqA3Xf.js');
   const second = await import('./second-D5ePGhEs.js');
-  const otherScript = await import('./other-script-I6BGCDCS.js');
+  const otherScript = await import('./other-script-HJQMEjTp.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1044,35 +1044,33 @@ console.log(modules_3ede29d3);
 "
 `;
 
-exports[`code-splitting manual-chunks-single: js 5`] = `
-"import './nondynamics-CYQNmqgG.js';
-
-console.log("sub");
-"
-`;
-
 exports[`code-splitting manual-chunks-single: js 6`] = `
-"console.log("noncss");
+"import './nondynamics-CYQNmqgG.js';
 "
 `;
 
 exports[`code-splitting manual-chunks-single: js 7`] = `
+"console.log("noncss");
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 8`] = `
 "var modules_2539eb5b = {"nondynamic2":"nondynamic2_nondynamic2"};
 
 console.log(modules_2539eb5b);
 "
 `;
 
-exports[`code-splitting manual-chunks-single: js 8`] = `
+exports[`code-splitting manual-chunks-single: js 9`] = `
 "(async () => {
   await import('./noncss-B2j3p-Ke.js');
-  const nestedScript = await import('./nested-script-MoN0W8vn.js');
+  const nestedScript = await import('./nested-script-LcDvje3V.js');
   console.log(nestedScript);
 })();
 "
 `;
 
-exports[`code-splitting manual-chunks-single: js 9`] = `
+exports[`code-splitting manual-chunks-single: js 10`] = `
 "var css = ".second_second {\\n  color: royalblue;\\n}";
 var modules_7a038d99 = {"second":"second_second"};
 
@@ -1080,12 +1078,12 @@ export { css, modules_7a038d99 as default };
 "
 `;
 
-exports[`code-splitting manual-chunks-single: js 10`] = `
+exports[`code-splitting manual-chunks-single: js 11`] = `
 "
 "
 `;
 
-exports[`code-splitting manual-chunks-single: map 1`] = `"{"version":3,"sources":["../../../../code-splitting/third.scss","../../../../code-splitting/thirdtwo.scss","../../../../code-splitting/fourth.scss","../../../../code-splitting/fourthtwo.scss","../../../../code-splitting/nondynamic.scss","../../../../code-splitting/nondynamic2.scss","../../../../code-splitting/partial.css","../../../../code-splitting/first.scss","../../../../code-splitting/second.scss","../../../../code-splitting/other-script.scss","../../../../code-splitting/sub/first.scss","../../../../code-splitting/nested-script.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF;ACHA;EACE,gBAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF","file":"extracted-BMW8fUXh.css","sourcesContent":[".third {\\n  color: maroon;\\n}\\n",".thirdtwo {\\n  color: hotpink;\\n}\\n",".fourth {\\n  color: magenta;\\n}\\n",".fourthtwo {\\n  color: honeydew;\\n}\\n",".nondynamic {\\n  color: deepskyblue;\\n}\\n",".nondynamic2 {\\n  color: deeppink;\\n}\\n",".partial {\\n  color: rosybrown;\\n}\\n","@import \\"./partial.css\\";\\n\\n.first {\\n  color: red;\\n}\\n",".second {\\n  color: royalblue;\\n}\\n",".other-script {\\n  color: wheat;\\n}\\n",".first_sub {\\n  color: black;\\n}\\n",".nested-script {\\n  color: rebeccapurple;\\n}\\n"]}"`;
+exports[`code-splitting manual-chunks-single: map 1`] = `"{"version":3,"sources":["../../../../code-splitting/third.scss","../../../../code-splitting/thirdtwo.scss","../../../../code-splitting/fourth.scss","../../../../code-splitting/fourthtwo.scss","../../../../code-splitting/nondynamic.scss","../../../../code-splitting/nondynamic2.scss","../../../../code-splitting/sub/first.scss","../../../../code-splitting/nested-script.scss","../../../../code-splitting/partial.css","../../../../code-splitting/first.scss","../../../../code-splitting/second.scss","../../../../code-splitting/other-script.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF;ACFA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF;ACHA;EACE,gBAAA;AACF;ACFA;EACE,YAAA;AACF","file":"extracted-DLVyn32M.css","sourcesContent":[".third {\\n  color: maroon;\\n}\\n",".thirdtwo {\\n  color: hotpink;\\n}\\n",".fourth {\\n  color: magenta;\\n}\\n",".fourthtwo {\\n  color: honeydew;\\n}\\n",".nondynamic {\\n  color: deepskyblue;\\n}\\n",".nondynamic2 {\\n  color: deeppink;\\n}\\n",".first_sub {\\n  color: black;\\n}\\n",".nested-script {\\n  color: rebeccapurple;\\n}\\n",".partial {\\n  color: rosybrown;\\n}\\n","@import \\"./partial.css\\";\\n\\n.first {\\n  color: red;\\n}\\n",".second {\\n  color: royalblue;\\n}\\n",".other-script {\\n  color: wheat;\\n}\\n"]}"`;
 
 exports[`code-splitting multi-entry: css 1`] = `
 ".first_partial {
@@ -2849,7 +2847,7 @@ exports[`less sourcemap: js 1`] = `
 
 exports[`less sourcemap: map 1`] = `"{"version":3,"sources":["../../../../less-import/node_modules/foo/bar/d.css","../../../../less-import/node_modules/foo/bar/a.less","../../../../less-import/style.less","../../../../less-import/node_modules/foo/bar/b.less","../../../../less-import/node_modules/foo/bar/c.css","../../../../less-import/foo.less","../../../../../../node_modules/minireset.css/minireset.min.css"],"names":[],"mappings":"AAAA;EACE,UAAU;AACZ;ACFA;EACE,gBAAA;ACEF;ACHA;EACE,UAAA;ADKF;AENA;EACE,UAAA;AFQF;AGPA;EACE,gBAAA;AHSF;AACA,0EAA0E;AIbC;;;;;;;;;;;;;;;;;;;;;;;EAAyG,SAAA;EAAS,UAAA;AJuC7L;AIvCuM;;;;;;EAAkB,eAAA;EAAe,mBAAA;AJgDxO;AIhD2P;EAAG,gBAAA;AJmD9P;AInD8Q;;;EAAoB,SAAA;AJwDlS;AIxD2S;EAAK,sBAAA;AJ2DhT;AI3DsU;;;EAAqB,mBAAA;AJgE3V;AIhE8W;;EAAU,YAAA;EAAY,eAAA;AJqEpY;AIrEmZ;EAAO,SAAA;AJwE1Z;AIxEma;EAAM,yBAAA;EAAyB,iBAAA;AJ4Elc;AI5Emd;;EAAM,UAAA;AJgFzd","file":"index-9v7Cn_-q.css","sourcesContent":[".d {\\n  color: red;\\n}\\n",".a {\\n  color: @color;\\n}\\n\\n@import \\"partial\\";\\n","@import \\"~foo/bar/a\\";\\n@import \\"~foo/bar/b\\";\\n@import \\"~foo/bar/c\\";\\n@import \\"foo/bar/d.css\\";\\n@import \\"~foo/bar/partial\\";\\n@import \\"foo.less\\";\\n@import \\"~minireset.css/minireset.min\\";\\n",".b {\\n  color: red;\\n}\\n",".c {\\n  color: red;\\n}\\n","@import \\"partial\\";\\n\\n.foo {\\n  color: @color;\\n}\\n","/*! minireset.css v0.0.7 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}\\n"]}"`;
 
-exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
+exports[`minimize extract: css 1`] = `".bar,.foo,.pcss,.sass,.stylus{color:red}.stylus{background:red}.sass{width:30%}.less{color:#6c94be}"`;
 
 exports[`minimize extract: js 1`] = `
 "var css$1 = ".foo{color:red}";
@@ -2861,8 +2859,8 @@ console.log(css$1, css);
 `;
 
 exports[`minimize extract-sourcemap-inline: css 1`] = `
-".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5zdHlsIiwiLi4vLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi8uLi9zaW1wbGUvc3R5bGUuc2FzcyIsIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vLi4vc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0JDQ0UsU0RFRixDQUhBLFFBRUUsY0FDRixDRUhBLFlDQ0UsU0RFRixDQUhBLE1BQ0UsU0FFRixDRUFBLE1BQ0UsYUFGRiIsImZpbGUiOiJpbmRleC1DaWYxV3ZZMS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3R5bHVzXG4gIGNvbG9yOiByZWRcbiAgYmFja2dyb3VuZDogQGNvbG9yXG4iLCIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5zYXNzXG4gIHdpZHRoOiAzMCVcbiAgY29sb3I6IHJlZFxuIiwiLnBjc3Mge1xuICBjb2xvcjogcmVkO1xufVxuIiwiQG5pY2UtYmx1ZTogIzViODNhZDtcbkBsaWdodC1ibHVlOiBAbmljZS1ibHVlICsgIzExMTtcblxuLmxlc3Mge1xuICBjb2xvcjogQGxpZ2h0LWJsdWU7XG59XG4iXX0= */"
+".bar,.foo,.pcss,.sass,.stylus{color:red}.stylus{background:red}.sass{width:30%}.less{color:#6c94be}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5zdHlsIiwiLi4vLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi8uLi9zaW1wbGUvc3R5bGUuc2FzcyIsIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhCQ0NFLFNERUYsQ0FIQSxRQUVFLGNBQ0YsQ0VIQSxNQUNFLFNBRUYsQ0NBQSxNQUNFLGFBRkYiLCJmaWxlIjoiaW5kZXgtQlN1R2dlbGEuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIiwiLmJhciB7XG4gIGNvbG9yOiByZWQ7XG59XG4iLCIuc2Fzc1xuICB3aWR0aDogMzAlXG4gIGNvbG9yOiByZWRcbiIsIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */"
 `;
 
 exports[`minimize extract-sourcemap-inline: js 1`] = `
@@ -2875,8 +2873,8 @@ console.log(css$1, css);
 `;
 
 exports[`minimize extract-sourcemap-true: css 1`] = `
-".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}
-/*# sourceMappingURL=index-Cif1WvY1.css.map */"
+".bar,.foo,.pcss,.sass,.stylus{color:red}.stylus{background:red}.sass{width:30%}.less{color:#6c94be}
+/*# sourceMappingURL=index-BSuGgela.css.map */"
 `;
 
 exports[`minimize extract-sourcemap-true: js 1`] = `
@@ -2888,7 +2886,7 @@ console.log(css$1, css);
 "
 `;
 
-exports[`minimize extract-sourcemap-true: map 1`] = `"{"version":3,"sources":["../../../../simple/style.styl","../../../../simple/bar.css","../../../../simple/style.sass","../../../../simple/style.pcss","../../../../simple/style.less"],"names":[],"mappings":"AAAA,kBCCE,SDEF,CAHA,QAEE,cACF,CEHA,YCCE,SDEF,CAHA,MACE,SAEF,CEAA,MACE,aAFF","file":"index-Cif1WvY1.css","sourcesContent":[".stylus\\n  color: red\\n  background: @color\\n",".bar {\\n  color: red;\\n}\\n",".sass\\n  width: 30%\\n  color: red\\n",".pcss {\\n  color: red;\\n}\\n","@nice-blue: #5b83ad;\\n@light-blue: @nice-blue + #111;\\n\\n.less {\\n  color: @light-blue;\\n}\\n"]}"`;
+exports[`minimize extract-sourcemap-true: map 1`] = `"{"version":3,"sources":["../../../../simple/style.styl","../../../../simple/bar.css","../../../../simple/style.sass","../../../../simple/style.less"],"names":[],"mappings":"AAAA,8BCCE,SDEF,CAHA,QAEE,cACF,CEHA,MACE,SAEF,CCAA,MACE,aAFF","file":"index-BSuGgela.css","sourcesContent":[".stylus\\n  color: red\\n  background: @color\\n",".bar {\\n  color: red;\\n}\\n",".sass\\n  width: 30%\\n  color: red\\n","@nice-blue: #5b83ad;\\n@light-blue: @nice-blue + #111;\\n\\n.less {\\n  color: @light-blue;\\n}\\n"]}"`;
 
 exports[`minimize inject: js 1`] = `
 "/** @type {HTMLElement[]} */

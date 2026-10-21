@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`importer warns about being unresolved: warning 1`] = `"Unresolved \`@import\` in \`@import "smh.css"\`"`;
 

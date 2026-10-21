@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`url resolver warns about being empty: warning 1`] = `"Empty URL in \`background:url()\`"`;
 

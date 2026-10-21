@@ -2,15 +2,23 @@ import fs from "fs-extra";
 import qs from "query-string";
 import { resolveAsync } from "../../../utils/resolve";
 
-/** File resolved by `@import` resolver */
+/**
+File resolved by `@import` resolver
+*/
 export interface ImportFile {
-  /** Absolute path to file */
+  /**
+  Absolute path to file
+  */
   from: string;
-  /** File source */
+  /**
+  File source
+  */
   source: Uint8Array;
 }
 
-/** `@import` resolver */
+/**
+`@import` resolver
+*/
 export type ImportResolve = (
   url: string,
   basedir: string,

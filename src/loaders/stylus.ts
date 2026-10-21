@@ -5,7 +5,9 @@ import { normalizePath } from "../utils/path";
 import { Loader } from "./types";
 import { RawSourceMap } from "source-map-js";
 
-/** Options for Stylus loader */
+/**
+Options for Stylus loader
+*/
 export interface StylusLoaderOptions extends Record<string, unknown>, stylus.PublicOptions {}
 
 const loader: Loader<StylusLoaderOptions> = {
@@ -46,8 +48,7 @@ const loader: Loader<StylusLoaderOptions> = {
         style.sourcemap.sources.map(async source => {
           const file = normalizePath(basePath, source);
           const exists = await fs.pathExists(file);
-          if (!exists) return null as unknown as string;
-          return fs.readFile(file, "utf8");
+          return exists ? fs.readFile(file, "utf8") : (null as unknown as string);
         }),
       );
     }

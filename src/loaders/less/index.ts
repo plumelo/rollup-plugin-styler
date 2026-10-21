@@ -3,7 +3,9 @@ import { normalizePath } from "../../utils/path";
 import { Loader } from "../types";
 import importer from "./importer";
 
-/** Options for Less loader */
+/**
+Options for Less loader
+*/
 export interface LESSLoaderOptions extends Record<string, unknown>, Less.Options {}
 
 const loader: Loader<LESSLoaderOptions> = {

@@ -8,8 +8,7 @@ import lessLoader from "./less";
 
 function matchFile(file: string, condition: Loader["test"]): boolean {
   if (!condition) return false;
-  if (typeof condition === "function") return condition(file);
-  return condition.test(file);
+  return typeof condition === "function" ? condition(file) : condition.test(file);
 }
 
 // This queue makes sure one thread is always available,
@@ -19,13 +18,21 @@ const threadPoolSize = process.env.UV_THREADPOOL_SIZE
   ? Number.parseInt(process.env.UV_THREADPOOL_SIZE)
   : 4; // default `libuv` threadpool size
 
-/** Options for {@link Loaders} class */
+/**
+Options for {@link Loaders} class
+*/
 interface LoadersOptions {
-  /** @see {@link Options.use} */
+  /**
+  @see {@link Options.use}
+  */
   use: [string, Record<string, unknown>][];
-  /** @see {@link Options.loaders} */
+  /**
+  @see {@link Options.loaders}
+  */
   loaders?: Loader[];
-  /** @see {@link Options.extensions} */
+  /**
+  @see {@link Options.extensions}
+  */
   extensions: string[];
 }
 

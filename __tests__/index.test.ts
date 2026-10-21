@@ -395,8 +395,7 @@ validateMany("extract", [
         const p = "[name][extname]";
         if (!name) return p;
         if (name.endsWith(".css")) return `css/${p}`;
-        if (name.endsWith(".map")) return `map/${p}`;
-        return p;
+        return name.endsWith(".map") ? `map/${p}` : p;
       },
     },
     options: { mode: "extract", sourceMap: true },
@@ -465,8 +464,12 @@ validateMany("sass", [
       sass: {
         sync: false,
         importer(url, _, done): void {
-          if (url === "~modularvirtualimport") done({ contents: ".modularvirtual{color:blue}" });
-          else done({ contents: ".virtual{color:red}" });
+          done({
+            contents:
+              url === "~modularvirtualimport"
+                ? ".modularvirtual{color:blue}"
+                : ".virtual{color:red}",
+          });
         },
       },
     },
@@ -478,8 +481,12 @@ validateMany("sass", [
       sass: {
         sync: true,
         importer(url: string): Data {
-          if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };
-          return { contents: ".virtual{color:red}" };
+          return {
+            contents:
+              url === "~modularvirtualimport"
+                ? ".modularvirtual{color:blue}"
+                : ".virtual{color:red}",
+          };
         },
       },
     },
@@ -628,8 +635,7 @@ validateMany("code-splitting", [
       manualChunks(id) {
         if (id.includes("third")) return "thirds";
         if (id.includes("fourth")) return "fourts";
-        if (id.includes("nondynamic")) return "nondynamics";
-        return "general";
+        return id.includes("nondynamic") ? "nondynamics" : "general";
       },
     },
   },
@@ -662,8 +668,7 @@ validateMany("code-splitting", [
       manualChunks(id) {
         if (id.includes("third")) return "thirds";
         if (id.includes("fourth")) return "fourts";
-        if (id.includes("nondynamic")) return "nondynamics";
-        return "general";
+        return id.includes("nondynamic") ? "nondynamics" : "general";
       },
     },
   },

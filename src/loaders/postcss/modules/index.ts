@@ -6,26 +6,32 @@ import extractImports from "postcss-modules-extract-imports";
 import modulesScope from "postcss-modules-scope";
 import generateScopedNameDefault from "./generate";
 
-/** Options for [CSS Modules](https://github.com/css-modules/css-modules) */
+/**
+Options for [CSS Modules](https://github.com/css-modules/css-modules)
+*/
 export interface ModulesOptions {
   /**
-   * Default mode for classes
-   * @default "local"
-   */
+  Default mode for classes
+  @default "local"
+  */
   mode?: "local" | "global" | "pure";
-  /** Fail on wrong order of composition */
+  /**
+  Fail on wrong order of composition
+  */
   failOnWrongOrder?: boolean;
-  /** Export global classes */
+  /**
+  Export global classes
+  */
   exportGlobals?: boolean;
   /**
-   * Placeholder or function for scoped name generation.
-   * Allowed blocks for placeholder:
-   * - `[dir]`: The directory name of the asset.
-   * - `[name]`: The file name of the asset excluding any extension.
-   * - `[local]`: The original value of the selector.
-   * - `[hash(:<num>)]`: A hash based on the name and content of the asset (with optional length).
-   * @default "[name]_[local]__[hash:8]"
-   */
+  Placeholder or function for scoped name generation.
+  Allowed blocks for placeholder:
+  - `[dir]`: The directory name of the asset.
+  - `[name]`: The file name of the asset excluding any extension.
+  - `[local]`: The original value of the selector.
+  - `[hash(:<num>)]`: A hash based on the name and content of the asset (with optional length).
+  @default "[name]_[local]__[hash:8]"
+  */
   generateScopedName?: string | ((name: string, file: string, css: string) => string);
 }
 

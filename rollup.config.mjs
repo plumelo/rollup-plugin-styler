@@ -15,7 +15,9 @@ import pkg from "./package.json" with { type: "json" };
 const extensions = [".ts", ".mjs", ".js", ".cjs", ".json"];
 const __dirname = new URL(".", import.meta.url).pathname;
 
-/** @type {import('rollup').RollupOptions[]} */
+/**
+@type {import('rollup').RollupOptions[]}
+*/
 const config = [
   // Bundle
   {

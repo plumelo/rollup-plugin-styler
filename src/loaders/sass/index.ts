@@ -4,11 +4,17 @@ import loadSass from "./load";
 import { importer, importerSync } from "./importer";
 import { Options, PublicOptions, Result } from "./types";
 
-/** Options for Sass loader */
+/**
+Options for Sass loader
+*/
 export interface SASSLoaderOptions extends Record<string, unknown>, PublicOptions {
-  /** Force Sass implementation */
+  /**
+  Force Sass implementation
+  */
   impl?: string;
-  /** Forcefully enable/disable sync mode */
+  /**
+  Forcefully enable/disable sync mode
+  */
   sync?: boolean;
 }
 

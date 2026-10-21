@@ -2,12 +2,8 @@ import postcss from "postcss";
 import urlResolver, { UrlOptions } from "../src/loaders/postcss/url";
 // import { fixture } from "./helpers";
 
-const validateUrl = async (
-  css: string,
-  options: UrlOptions = {},
-  from = "dummy",
-): Promise<string> => {
-  const data = await postcss(urlResolver(options)).process(css, { from });
+const validateUrl = async (css: string, options: UrlOptions = {}): Promise<string> => {
+  const data = await postcss(urlResolver(options)).process(css, { from: "dummy" });
   const [warning] = data.warnings();
   return warning.text;
 };
