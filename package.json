@@ -74,7 +74,7 @@
     "tslib": "^2.6.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
+    "@babel/core": "^8.1.0",
     "@babel/preset-env": "^7.23.3",
     "@commitlint/cli": "^21.0.0",
     "@commitlint/config-angular": "^21.0.0",
